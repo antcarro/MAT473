@@ -1,0 +1,215 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,amssymb,dsfont,enumerate,color}
+\usepackage[top=1in, bottom=1in]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\tdplotsetmaincoords{70}{110}
+\usetikzlibrary{arrows.meta}
+\fancyhead[L]{MAT473}
+\fancyhead[R]{Homework 1}
+\fancyfoot[L]{Name: \underline{\hspace{2in}}}
+\fancyfoot[R]{\large \thepage}
+\fancyfoot[C]{}
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbk}{\mathbb{k}}
+
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+\newcommand{\iitem}{\vfill \item}
+\newcommand{\topic}[1]{\textcolor{blue}{#1}}
+\newcommand{\answerbox}{\begin{flushright}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (5,-1.75);
+    \end{tikzpicture}\end{flushright}}
+\newcommand{\solution}[1]{\textcolor{red}{#1}}
+\newcommand{\points}[1]{\ [#1pts]}
+\renewcommand{\solution}[1]{}
+\newcommand{\ev}{\operatorname{ev}}
+
+\begin{document}
+\pagestyle{fancy}
+
+
+\begin{enumerate}
+\item Let $R$ be a ring. Prove the following basics:
+  \begin{enumerate}
+  \item $0\cdot a=0$ for all $a\in R$. 
+\solution{Consider $0a+0a=(0+0)a=0a$. Taking the additive inverse of
+  $0a$ on both sides gives $0a+0=0$ or $0a=0$. }
+  \item If $a,b\in R$, then $a\cdot (-b)=-(a\cdot b)$. (Be careful as this isn't just
+    ``moving around a minus sign''; it says that $a$ times the
+    additive inverse of $b$ is suppose to be the additive inverse of
+    $ab$, and that's what you must prove.)
+\solution{$a(-b)+ab = a(-b+b)=a0=0$. Hence, $-ab=a(-b)$. }
+  \end{enumerate}
+\item  Let $n$ be a positive integer. Prove that the set of zero
+  divisors of $\bbZ/n\bbZ$ is precisely the set of elements in
+  $\bbZ/n\bbZ$ that are not relatively prime to $n$, and that the set of
+  units in $\bbZ/n\bbZ$ is the set of elements that \emph{are}
+  relatively prime to $n$.
+\solution{
+Suppose that $z\in \{1,\dotsc, n-1\}$ is an integer with
+$\gcd(z,n)=d\neq 1$. Then $\operatorname{lcm}(z,n)=\frac{zn}{d}=z
+\frac{n}{d}$. By definition of $d$, $\frac{n}{d}$ is an integer that
+is \emph{strictly} less than $n$ since $d\neq 1$. Thus,
+\begin{align*}
+  [z][n/d] &= [zn/d]\\
+  &= [(z/d) n]
+\end{align*}
+which is equal to zero since $z/d$ is an integer. Hence, if $z$ and
+$n$ are not coprime, $z$ is a zero divisor. 
+Now suppose that $[z]\in \bbZ/n\bbZ$ is a zero divisor. Then there is a
+non-zero element $[b]\in \bbZ/n\bbZ$ such that $[bz]=[0]$ in
+$\bbZ/n\bbZ$. Without loss of generality, we may assume $z,b\in
+\{1,\dotsc, n-1\}$. Hence, $bz$ is a multiple of $n$, so $bz=kn$ for
+some integer $k$. But since $b<n$, $zb<zn$. Therefore, the least
+common multiple of $z$ and $n$ is less than $zn$. This implies that
+$b$ and $n$ are \emph{not} relatively prime.  }
+\solution{Suppose that $[z]\in \bbZ/n\bbZ$ is a unit. Thus, there
+  is an element $[a]\in \bbZ/n\bbZ$ such that $[a][z]=[1]$, i.e.,
+  $az-1$ is a multiple of $n$. Hence, $az-1=bn$ for some integer
+  $b$. Equivalently, $az+bn=1$ for some integers $a$ and $b$. This
+  implies that $\gcd(z,n)=1$ (since the smallest positive integer that
+  can be written as a $\bbZ$-linear combination of two integers is
+  their greatest common divisor). The other direction is similar.}
+\item Prove that if $R$ is an integral domain and the cardinality of
+  $R$ is finite, then $R$ is a field.  
+\solution{
+Suppose that $R$ is an integral domain of finite cardinality. Suppose
+that $y\in R\setminus \{0\}$, and enumerate the elements of $R$ as
+$\{x_1,\dotsc, x_n\}$. Consider the set of elements $yR =
+\{yx_1,yx_2,\dotsc, yx_n\}$. Note that $\lvert yR\rvert \leq \lvert
+R\rvert$ since $yR$ has at most $n$ distinct elements. Define a
+function $f: R\rightarrow yR$ via $f(x)=yx$. It is clear that $\lvert yR\rvert \leq \lvert
+R\rvert$ I claim first that $f$ is injective. Indeed,
+suppose that $f(x_i)=f(x_j)$ for some $i,j$. Then $yx_i=yx_j$. By the
+cancellation in integral domains proven in class,
+$x_i=x_j$. Therefore, $f$ is injective. This implies that $\lvert R
+\rvert\leq \lvert yR\rvert$. Hence, combined with the other inequality
+from above, we have $\lvert yR \rvert = \lvert R\rvert$. But
+$yR\subset R$ since $R$ is closed under multiplication. Since they are
+of equal and finite cardinality, $yR=R$. Therefore, $1\in yR$, so
+$1=yx_i$ for some $i$. }
+\item Let $R$ be an integral domain, and $a,b\in R$ be elements with
+  $a\neq 0$. Prove that the equation $ax^2=b$ has at most two
+  solutions in $R$. Then find an example of an integral domain $R$ and
+  an equation $ax^2=b$ that has no solutions, one that has exactly one
+  solution, and one that has exactly two solutions.
+\solution{Suppose that $a,b\in R$ with $a\neq 0$, and suppose that
+  $x\neq y\in R$ are two elements with $ax^2=b$ and $ay^2=b$. Then
+  $ax^2=ay^2$, so by cancellation in integral domains,
+  $x^2=y^2$. Subtracting $y^2$ from both sides and factoring yields 
+  \begin{align*}
+    x^2-y^2 &= 0\\
+(x-y)(x+y) &=0.
+  \end{align*}
+Since $R$ is an integral domain, this implies $x-y=0$ or
+$x+y=0$. Therefore, either $x=y$ (which contradicts the assumption) or
+$-x=y$. If $z$ is a third solution, then by the same reasoning $-x=z$
+as well. But this implies $y=z$, so the only two possible solutions
+are $x$ and $-x$. 
+$\star$ Note: This does not imply that there \emph{are} two
+solutions. There could be none, and there could be one. Can you
+construct examples where this is the case? In $\bbZ/4\bbZ$, $x^2=1$
+has exactly two solutions, $x^2=2$ has no solutions, in $\bbZ/2\bbZ$,
+$x^2=1$ has only one solution.}
+\item Let $\varphi: R\rightarrow R'$ be a ring homomorphism. Prove
+  that $\ker \varphi$ is a subring with the additional
+  \emph{absorbtion} property. That is, if $x\in \ker \varphi$ and
+  $r\in R$, then $rx\in \ker \varphi$ and $xr\in \ker \varphi$. Such a
+  subring is called a \emph{two-sided ideal} in $R$. Find all
+  two-sided ideals in $\bbZ/60\bbZ$. 
+\solution{Suppose that $x\in \ker \varphi$ and $r\in R$. Then
+  $\varphi(rx)=\varphi(r)\varphi(x) = \varphi(r)\cdot 0 = 0$, and
+  similarly with the other order.}
+\item Consider the ring $\bbZ$ and a two-sided ideal $I\subset \bbZ$. Prove
+  that $x,y\in I$ if and only if $\gcd(x,y)\in I$. 
+\solution{
+Suppose that $x,y\in I$. Since $I$ is an ideal, by absorption, $ax, by$ are in $I$
+for any $a,b\in \bbZ$. By closure under addition, $ax+by\in I$ for all
+$a,b\in \bbZ$ as well. In particular, $\gcd(x,y)$ is the smallest
+positive integer that can be written in the form $ax+by$, so
+$\gcd(x,y)\in I$. 
+Now suppose that $d=\gcd(x,y)\in I$. Then $x=kd$ and $y=ld$ for some
+$k,l\in \bbZ$. Hence, by absorption, $x,y\in I$. }
+\item Let $F$ be a field and $a\in F$ be an arbitrary element. Define
+  the function $\ev_a: F[x]\rightarrow F$ via $\ev_a(f) = f(a)$ (i.e.,
+  just replace $x$ with $a$ and evaluate).
+  \begin{enumerate}
+  \item Prove that $\ev_a$ is a ring homomorphism. 
+\solution{First, $\ev_a(0)=0$ since the evaluation at any point of the
+  zero polynomial is zero. Now suppose that $f(x), g(x)\in F[x]$. Then
+  $\ev_a(f+g)=(f+g)(a)=f(a)+g(a)=\ev_a(f)+\ev_a(g)$. Finally,
+  $\ev_a(fg)=(fg)(a)=f(a)g(a)=\ev_a(f)\ev_a(g)$. }
+  \item Compute the kernel of $\ev_a$ and prove your result. 
+\solution{Suppose that $f\in \ker \ev_a$. Then $f(a)=0$. We can apply
+  the division algorithm, dividing $f(x)$ by $(x-a)$, which yields 
+  \[f(x)=(x-a)g(x)+r(x)\] where the degree of $r(x)$ is at most
+  $1$. Hence, $f(x)=(x-a)g(x)+c$. From the above remarks,
+  \begin{align*}
+    f(a)&= (a-a)g(a)+c\\
+0 &= 0+c\\
+0=c.
+  \end{align*}
+Hence, $f(x)=(x-a)g(x)$. Therefore, $f(x)\in \ker \ev_a$ if and only
+if $f(x)=(x-a)g(x)$ for some polynomial $g(x)$. }
+
+
+  \end{enumerate}
+
+
+\end{enumerate}
+\end{document}
+2018/01/03 16:59:46

@@ -1,0 +1,221 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,amssymb,dsfont,enumerate,color}
+\usepackage[top=1in, bottom=1in]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\tdplotsetmaincoords{70}{110}
+\usetikzlibrary{arrows.meta}
+\fancyhead[L]{MAT473}
+\fancyhead[R]{Homework 2}
+\fancyfoot[L]{Name: \underline{\hspace{2in}}}
+\fancyfoot[R]{\large \thepage}
+\fancyfoot[C]{}
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbk}{\mathbb{k}}
+
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+\newcommand{\iitem}{\vfill \item}
+\newcommand{\topic}[1]{\textcolor{blue}{#1}}
+\newcommand{\answerbox}{\begin{flushright}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (5,-1.75);
+    \end{tikzpicture}\end{flushright}}
+\newcommand{\solution}[1]{\textcolor{red}{#1}}
+\newcommand{\points}[1]{\ [#1pts]}
+%\renewcommand{\solution}[1]{}
+
+\begin{document}
+\pagestyle{fancy}
+
+
+\begin{enumerate}
+\item Recall that in order to prove that given a chain of ideals
+  $J\subset I \subset R$, there is an isomorphism $(R/I)/(J/I)\cong
+  R/J$, we wanted to study the function
+  \begin{align*}
+    \varphi: R/I &\rightarrow R/J\\
+    \varphi: r+I &\mapsto r+J.
+  \end{align*}
+Prove that $\varphi$ is a well-defined ring homomorphism with
+$\ker(\varphi)=J/I =\{j+I\mid j\in J\}$. 
+\solution{
+[Well-defined] Suppose that $r_1+I=r_2+I$. Equivalently, $r_1-r_2\in
+I$. Then
+\begin{align*}
+  \varphi(r_1+I) &= r_1+J\\
+  \varphi(r_2+I)&= r_2+J.
+\end{align*}
+But $r_1-r_2\in I\subset J$, so $r_1+J=r_2+J$. Hence,
+$\varphi(r_1+I)=\varphi(r_2+I)$. 
+[Homomorphism] Suppose that $r,s\in R$. Then
+\begin{align*}
+  \varphi((r+I)+(s+I)) &= \varphi((r+s)+I) \
+&= r+s+J\\
+&= (r+J)+(s+J)\\
+&= \varphi(r+I)+\varphi(s+I).
+\end{align*}
+The multiplication is similar. 
+[Kernel] We have $x+I\in \ker(\varphi)$ if and only if
+$\varphi(x+I)=x+J=0+J$, which holds if and only if $x\in J$. Thus,
+$\ker(\varphi)=\{x+I \mid x\in J\}$, which we denote $J/I$.
+}
+\item Describe all ideals in $\bbZ/n\bbZ$ for any positive integer
+  $n$. 
+\solution{
+Recall that in any ring $R$ and for any ideal $I$, there is a
+bijection between ideals $J$ containing $I$ and ideals in $R/I$. Thus,
+the ideals in $\bbZ/n\bbZ$ are all associated with ideals $m\bbZ$ in
+$\bbZ$ that contain $n\bbZ$. But these are precisely the ideals
+$m\bbZ$ with $m\mid n$. Hence, for each $m\mid n$, there is an ideal
+$m\bbZ/n\bbZ$ consisting of all multiples of $[m]$ in $\bbZ/n\bbZ$.}
+\item Suppose that $R$ is an ring. Prove that $R[x]$ is an integral
+  domain if and only if $R$ is an integral domain.
+\solution{
+First, $R$ can be viewed as a subset of $R[x]$ by inclusion as the
+constant polynomials. Thus, if $R$ is not an integral domain, $R[x]$
+cannot be either. On the other hand, suppose that $R$ is an integral
+domain. Define the function $\deg: R[x]\rightarrow \bbZ$ by taking the
+degree of a polynomial to be the largest power of $x$ that occurs in a
+polynomial with non-zero coefficient. Note that the degree is
+multiplicative, since the highest power of $x$ possibly occuring in $f(x)g(x)$
+is $x^{\deg f+\deg g}$ and it occurs with non-zero coefficient since
+its coefficient is the product of the coefficients of $x^{\deg f}$ and
+$x^{\deg g}$ in $f$ and $g$ and $R$ is an integral domain. 
+}
+\item Suppose that $F$ is a field. Prove the following:
+  \begin{enumerate}
+  \item If $f(x),g(x)\in F[x]$, then there exists polynomials $q(x)$
+    and $r(x)$ in $F[x]$ such that $f(x)=g(x)q(x)+r(x)$ where
+    $\deg(r(x))<deg(g(x))$. 
+\solution{
+If $\deg f(x)<\deg g(x)$, then $q(x)=0$ and $r(x)=f(x)$
+work. Otherwise, suppose that $f(x)=\sum\limits_{i=0}^N a_i x^i$ and
+$g(x)=\sum\limits_{i=0}^M b_i x^i$ so that $a_N\neq 0$ and $b_M\neq
+0$.  Then
+\[f(x)-\left(\frac{a_N}{b_M}x^{N-M}\right) g(x)\] is a polynomial of
+degree $N-1$. If $N=M$, then take this resulting polynomial to be
+$r(x)$. So $f(x)=\left(\frac{a_N}{b_M}x^{N-M}\right) g(x)+r(x)$ and
+$\deg r(x)<M$. If $N>M$, then by induction
+$f(x)-\left(\frac{a_N}{b_M}x^{N-M}\right) g(x)=g(x)q(x)+r(x)$ for some
+polynomial $r(x)$ of degree less than $M$. Hence, $f(x) =
+g(x)\left[q(x)+\left(\frac{a_N}{b_M}x^{N-M}\right)x^{N-M}\right]+r(x)$
+and $\deg r(x)<M$. 
+}
+  \item Suppose that $f(x),g(x)\in F[x]$. Prove that if
+    $f(x)=g(x)q(x)+r(x)$ where $q(x),r(x)$ are the polynomials
+    guaranteed from above, then
+    $\gcd(f(x),g(x))=\gcd(g(x),r(x))$. \footnote{This can be iterated
+      to prove that $\gcd(f(x),g(x))$ can be written as a linear
+      combination of $f(x)$ and $g(x)$. }
+\solution{Suppose that $d(x) \mid f(x)$ and $d(x)\mid g(x)$. But
+  $r(x)=f(x)-g(x)q(x)$, so $d(x)$ divides $r(x)$. Now suppose that
+  $h(x)$ divides $g(x), r(x)$. Then clearly $h(x)$ dividies
+  $f(x)$. Hence, the set of divisors of $f(x)$ and $g(x)$ is the set
+  as the set of divisors of $g(x),r(x)$. Thus, their maximal elements
+  are equal.
+}
+  \end{enumerate}
+\item Suppose that $R$ is a commutative local ring. I.e., a
+  commutative ring with
+  $1\neq 0$ which
+  has a unique maximal ideal, which we'll call $\mathfrak{m}$. Prove
+  that $R^* = R\setminus \mathfrak{m}$. 
+\solution{Suppose that $x\in R\setminus \mathfrak{m}$, and take $(x)$
+  the ideal generated by $x$. Since $x\notin \mathfrak{m}$,
+  $(x)\not\subset \mathfrak{m}$. But $\mathfrak{m}$ contains all
+  proper ideals, so $(x)=R$. Thus, there is an element $y\in R$ such
+  that $yx=1$. Hence $x$ is invertible. Now suppose that $x$ is
+  invertible. Then $x\notin \mathfrak{m}$ since otherwise
+  $1=x^{-1}x\in \mathfrak{m}$, implying $\mathfrak{m}=R$, but this is
+  not the case.}
+\item Suppose that $\mathfrak{p}$ is an ideal in a commutative ring
+  with identity $1\neq 0$. Prove that $\mathfrak{p}$ is prime if and only if
+    $R/\mathfrak{p}$ is an integral domain. 
+\solution{Suppose that $p$ is a prime ideal, and let $x, y\in
+  R$ such that $(x+p)(y+p)=0+p$ in $R/p$. Then $xy\in p$. By
+  definition, then, either $x\in p$ or $y\in p$. Hence, $x+p=0$ or
+  $y+p=0$. 
+Now suppose that $R/p$ is an integral domain, and $x,y\in R$ such that
+$xy\in p$. Then $(x+p)(y+p)=0+p$, and by assumption, one of the two
+must be zero. Hence, for example, $x+p=0$ implies $x\in p$.}
+\item Suppose that $n,m\in \bbZ$, and consider the function 
+  \begin{align*}
+    \varphi: \bbZ & \rightarrow \bbZ/n\bbZ \times \bbZ/m\bbZ\\
+    \varphi: x & \mapsto ([x]_n, [x]_m)
+  \end{align*}
+where $[x]_n$ indicates the equivalence class of $x$ modulo $n$.
+\begin{enumerate}
+\item Prove that $\varphi$ is a ring homomorphism.
+\solution{Projection maps are homomorphisms and products of
+  homomorphisms are homomorphisms.}
+\item Compute the kernel of $\varphi$ and determine the cardinality of
+  its image. 
+\newcommand{\lcm}{\operatorname{lcm}}
+\solution{Suppose $x\in \ker \varphi$. Then $[x]_n=0$ and
+  $[x]_m=0$. Hence, $x$ is a multiple of both $n$ and $m$. Thus, $\ker
+  \varphi=(\lcm(n,m))\bbZ$. Note that the cardinality of the image is,
+therefore, equal to the cardinality of $\bbZ/\lcm(n,m)\bbZ$, which is
+precisely $\lcm(n,m)$.}
+\item What does this tell you in the case that $\gcd(n,m)=1$. 
+\solution{In this case, the cardinality of the image is $nm$, which is
+precisely the cardinality of the codomain. Hence, $\varphi$ is onto,
+so $\bbZ/nm\bbZ \cong \bbZ/n\bbZ \times \bbZ/m\bbZ$ as rings.}
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}
+2018/01/11 21:36:40

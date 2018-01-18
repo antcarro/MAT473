@@ -1,0 +1,813 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,amssymb,dsfont,enumerate,color}
+\usepackage[top=1in, bottom=1in]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\tdplotsetmaincoords{70}{110}
+\usetikzlibrary{arrows.meta}
+\fancyhead[L]{MAT473}
+\fancyhead[R]{Topics}
+\fancyfoot[L]{Name: \underline{\hspace{2in}}}
+\fancyfoot[R]{\large \thepage}
+\fancyfoot[C]{}
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbk}{\mathbb{k}}
+\newcommand{\Ab}{\mathcal{Ab}}
+\newcommand{\obj}{\operatorname{obj}}
+\newcommand{\mor}{\operatorname{mor}}
+
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+\newcommand{\iitem}{\vfill \item}
+\newcommand{\image}{\operatorname{image}}
+\newcommand{\topic}[1]{\textcolor{blue}{#1}}
+\newcommand{\answerbox}{\begin{flushright}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (5,-1.75);
+    \end{tikzpicture}\end{flushright}}
+\newcommand{\solution}[1]{\textcolor{red}{#1}}
+\newcommand{\points}[1]{\ [#1pts]}
+%\renewcommand{\solution}[1]{}
+\newcounter{excounter}[subsection]
+\setcounter{excounter}{0}
+\newcommand{\exercise}[1]{
+\addtocounter{excounter}{1}
+\textcolor{red}{\fbox{\Large \Roman{section}.\roman{subsection}.\arabic{excounter}} #1}
+}
+\begin{document}
+\pagestyle{fancy}
+\tableofcontents
+\setcounter{section}{6}
+\section{Basics}
+\label{sec:basics}
+
+\subsection{Introduction to rings}
+
+
+\begin{description}
+\item[Definition: Ring] $(R,+)$ is an abelian group, $\cdot$ is
+  associative, left-and-right distributivity; can be commutative or
+  not; can have identity or not (some always assume yes)
+\item[Properties: Ring]\ 
+  \begin{enumerate}
+  \item $0a=0$ for all $a\in R$;
+  \item If $1\in R$, its additive inverse is $-1$, and $-a=(-1)a$;
+  \end{enumerate}
+\item[Definition: division ring] A ring $R$ with unity $1\neq 0$ is a
+  division ring if for each $a\in R\setminus \{0\}$, there is an
+  element $b\in R$ such that $ab=ba=1$ (i.e., $R\setminus \{0\}$ is a
+  group under $\cdot$). If it's commutative, $R$ is a
+  field. 
+\item[Examples: Rings]\ 
+  \begin{enumerate}
+  \item Trivial: all products are zero (can't contain identity)
+  \item Zero ring
+  \item Integers
+  \item Rationals, reals, complex
+  \item $\bbZ/n\bbZ$, but there's something to check here
+  \item $\operatorname{Mat}_{n\times n}(\bbF)$
+  \item Quaternion ring $\bbH = \{a+bi+cj+dk\mid a,b,c,d\in \bbR\}$
+    with $ij=k$, $jk=i$, $ki=j$, and minuses if you reverse
+  \item Rings of functions: $Y^X=\{f: X\rightarrow Y\}$. If $Y$ is a
+    ring, then define $(f+g)(x)=f(x)+g(x)$ and
+    $(fg)(x)=f(x)g(x)$. \exercise{When is it unital? When is it
+      commutative?} \exercise{What if we require the functions to have
+      property $F$?}
+  \item Given a field $F$, $F[x_1,\dotsc, x_n]$ polynomials,
+    $F(x_1,\dotsc, x_n)$ rational functions, $F[[x_1,...,x_n]]$ formal
+    power series, $F[x]/(x^m)$ in which $x^m$ is set equal to zero,
+    and others...
+  \item Weird one... perhaps: Let $n$ be an integer, and $F$ be a
+    field. Let $FQ$ denote the vector space defined on the basis
+    elements $t_{ij}$ where $1\leq i \leq j \leq n$. Define
+    multiplication of these elements via $t_{ij}t_{kl}=\begin{cases}
+      t_{il} & \textrm{~if j=k}\\ 0 &
+      \textrm{~otherwise}\end{cases}$ and extend this multiplication
+    linearly. This is called the \emph{path algebra} associated to the
+    directed graph $1\rightarrow 2 \rightarrow \dotsc \rightarrow n$.
+  \item $R[\sqrt{d}]=\{a+b\sqrt{d} \mid a,b\in R\}$ (suppose $R$ is
+    commutative) where $d$ is some integer. We make sense of
+    multiplication via
+    $(a+b\sqrt{d})(a'+b'\sqrt{d})=aa'+d(bb')+(ab'+ba')\sqrt{d}$ and $d
+    r$ is taken to mean $\underbrace{r+r+\dotsc+r}_d$. 
+  \end{enumerate}
+\item[Definition: Zero divisor \& Unit] $a\in R\setminus \{0\}$ is a
+  \emph{zero divisor} if $\exists b\in R$ such that $ab=0$ or
+  $ba=0$. $a$ is \emph{unit} if $\exists b\in R$ such that $ab=1$. The
+  set of units of $R$ is denoted $R^\times$. (Note: it is a group!)
+\item[Exercise: zero divisors/units] \exercise{Prove that if $a$ is a
+    unit, it is not a zero divisor, and that if $a$ is a zero divisor,
+    then it is not a unit.} \exercise{Find an example of a ring $R$
+    and an element $a$ where $a$ is neither a zero divisor nor a
+    unit.}
+\item[Exercise: units/zero divisors examples] \exercise{Describe the
+    units and zero divisors of $\bbZ$.} \exercise{Describe the set of
+    zero divisors of $\bbZ/n\bbZ$.} \exercise{Describe the units in
+    $\bbZ/n\bbZ$.}
+\item[Exercise: quadratic number field] \exercise{Show that
+    $\bbQ[\sqrt{d}]$ has no zero divisors (and hence that
+    $\bbZ[\sqrt{d}]$ has no zero divisors).} \exercise{Show that
+    $\bbQ[\sqrt{d}]$ is a field.}
+\item[Definition: integral domain] A \emph{commutative ring} with no
+  zero divisors is an integral domain. 
+\item[Property: cancellation in integral domains] \exercise{In an
+    integral domain, $ab=0$ implies $a=0$ or $b=0$, so $ab=ac$ with
+    $a\neq 0$ implies $b=c$.}
+  \item[Exercise] \exercise{A finite integral domain is a field!}
+  \item[Definition: subring] A subring is a subgroup that is also
+    closed under multiplication. It is assumed to have the same
+    identity if it has one. 
+  \item[Exercises]\ 
+    \begin{itemize}
+    \item \exercise{The center of a ring is the set of all elements
+        that commute with everything. Prove that the center is a
+        subring. Prove that the center of a division ring is a field.}
+    \item \exercise{Suppose that $F,G$ are two fields and $F\subset
+        G$. Prove that $G$ is a vector space over $F$ (hence it makes
+        sense to talk about its dimension over $F$).}
+    \item \exercise{Prove that if $R$ is an integral domain, the equation $ax=b$
+        has at most one solution $x$ for any pair $a,b\in R$ with $a$
+        and $b$ not both equal to zero.}
+    \item \exercise{Prove that if $R$ is an integral domain, there are
+        at most two solutions to the equation $ax^2=b$ for any $a,b\in
+        R$ with $a$ and $b$ not both equal to zero. }
+      \item \exercise{Let $I$ be some indexing set, and $R_i$ be a
+          ring for each $i\in I$. Define $\prod\limits_{i\in I} R_i$
+          to be the direct product ring (Cartesian product with
+          componentwise addition and multiplication). Prove that this
+          is commutative if and only if each $R_i$ is, an integral
+          domain if and only if each $R_i$ is, and a ring with unity
+          if and only if each $R_i$ is.}
+      \item \exercise{Consider the subset $\bigoplus\limits_{i\in I}
+          R_i$ within $\prod\limits_{i\in I} R_i$ of elements
+          $(r_1,r_2,\dotsc)$ in which all but finitely many of the
+          $r_i$ are equal to zero. Prove that this subset is a
+          ring. Explain further why this \emph{direct sum} ring does
+          not have an identity if $I$ is infinite (even if each $R_i$
+          does have an identity).}
+      \item \exercise{Let $R$ be a commutative ring with identity, and
+          $G=\{g_1,\dotsc, g_n\}$ be a finite group with operation
+          written as multiplication (no matter what it really
+          is). Define $RG$ to be the set of formal sums 
+          \[a_1g_1+\dotsc + a_n g_n \] where $a_i\in R$ and $g_i \in
+          G$. Define addition componentwise, and multiplication by
+          $(ag_i)(bg_j)=(ab)(g_ig_j)$. Show that $RG$ is a ring, which
+          is commutative if and only if $G$ is Abelian. }
+      \item \exercise{Prove that if in the group ring $RG$, any
+          element $1g_i$ is a unit, but that if $G\neq \{e\}$, there
+          are always zero divisors.}
+      \item \exercise{Prove that the real quaternion ring is a
+          division ring.}
+    \end{itemize}
+\end{description}
+
+\setcounter{subsection}{2}
+\subsection{Ring homomorphisms}
+\label{sec:ring-homomorphisms}
+
+\begin{description}
+\item[Definition: homomorphism/isomorphism] A ring homomorphism $\phi:
+  R\rightarrow R'$ is a group homomorphism of the additive groups
+  $(R,+), (R',+')$ satisfying $\phi(ab)=\phi(a)\phi(b)$ for all
+  $a,b\in R$. An isomorphism is a bijective homomorphism. 
+\item[Exercise: inverse homomorphism] \exercise{If $\phi: R\rightarrow
+    S$ is a ring homomorphism that is bijective, then $\phi^{-1}:
+    S\rightarrow R$ is also a ring homomorphism.}
+\item[Definition: image and kernel] The \emph{kernel} of a ring
+  homormophism is the set $\{r\in R \mid \phi(r)=0\}$. 
+\item[Exercise: substructure of kernel and image] \exercise{The image
+    of a ring homomorphism is a subring of the codomain.}
+  \exercise{The kernel $K$ of a ring homomorphism $\phi: R\rightarrow S$
+    is a subring of the domain with the additional property that $r
+    k\in K$ for any $k\in K$ and $r\in R$.}
+\item[Exercise: examples]\ 
+  \begin{itemize}
+  \item \exercise{For any positive integer $n$ define the map $\phi:
+      \bbZ\rightarrow \bbZ/n\bbZ$ via $\phi(m)=[m]_n$ (the congruence
+      class of $m$ modulo $n$.) Compute its kernel.}
+  \item \exercise{Let $F$ be a field, and $a\in F$ be a fixed
+      element. Define $\operatorname{ev}_a: F[x]\rightarrow F$ by the
+      following assignment: $\operatorname{ev}_a(p(x)) = p(a)$. Prove
+      that $\phi$ is a ring homomorphism. Describe the kernel.} 
+  \item \exercise{Challenge: Consider the homomorphism from the
+      above. Show that if $F=\bbC$, then
+      $\operatorname{ker}(f)=\{p(x)\in \bbC[x] \mid p(x)=(x-a)q(x),
+      \exists q(x)\in \bbC[x]\}$. }
+  \item \exercise{Let $m$ be an integer. Determine the values of $m$
+      for which the function $\phi_m: \bbZ\rightarrow \bbZ$ given by
+      $\phi_m(n)\mapsto m\cdot n$ is a homomorphism. }
+  \end{itemize}
+\item[Definition: quotient rings] So the kernel $\ker \phi$ is a
+  homomorphism $\phi: R\rightarrow S$ is, at core, an
+  additive subgroup of the $R$. From groups, we know that it is
+  normal, and the first isomorphism theorem for groups tells us that
+  $R/\ker \phi$ is isomorphic (as a group) to $\image
+  \phi$ via $\tilde{\phi}: r+\ker \phi\mapsto
+  \phi(r)$. \exercise{Prove that $\tilde{\phi}$ is a ring
+    homomorphism.}
+\item[Exercise] \exercise{Let $\bbQ$ be the rational number field, and consider
+  the ring $\bbQ[x]$. Define the function $\varphi: \bbQ[x]\rightarrow
+  \bbR$ by $\varphi(f)=f(\sqrt{5})$.
+  \begin{enumerate}
+  \item Compute the kernel of $\varphi$. 
+  \item Show that the image of $\varphi$ is isomorphic to
+    $\bbQ[\sqrt{5}]$. 
+  \end{enumerate}}
+\item[Definition: ideals] Motivated by the additional structure of the
+  kernel of a homomorphism, define an ideal. Let $I$ be a subgroup of
+  $(R,+)$. Then $I$ is a
+  \begin{itemize}
+  \item \emph{left ideal} if $r x \in I$ for all pairs
+    $r\in R$ and $x\in I$;
+  \item \emph{right ideal} if $xr \in I$ for all pairs $r\in R$ and
+    $x\in I$. 
+  \item \emph{two-sided ideal} if it is both a left and right ideal. 
+  \end{itemize}
+we can form the quotient ring of $R$ by any two-sided ideal exactly as
+we did above. 
+\item[Exercise] \ Let $I\subset R$ be an ideal.
+  \begin{itemize}
+  \item \exercise{If there is an invertible element $x\in I$ such that
+    $x^{-1}\in I$, then $I=R$. }
+  \item \exercise{If $a_1,\dotsc, a_k\in I$ and $r_1,\dotsc, r_k\in
+      R$ and $I$ is a left ideal, then $a_1r_1+\dotsc+a_kr_k\in I$. }
+  \item \exercise{Let $I\subset \bbQ[x]$ be the set of polynomials
+      whose summands are of degree at least 2. Compute the dimension
+      of $\bbQ[x]/I$ as a vector space over $\bbQ$. Find a complete
+      set of representatives for the elements of $\bbQ[x]/I.$}
+  \item \exercise{List the ideals of $\bbZ/n\bbZ$ for each integer
+      $n$. }
+  \item \exercise{Prove that a commutative ring $R$ is a field if and only if it
+      has no non-trivial ideals (i.e., its only ideals are $R$ and $\{0\}$.}
+  \end{itemize}
+\item[Exercise: examples] 
+  \begin{itemize}
+  \item \exercise{Describe all ideals in $\bbZ$.}
+  \end{itemize}
+\item[Exercise: reduction for Diophantine] The greeks (and beyond)
+  were interested deeply in Diophantine equations, that is, polynomial
+  equations in multiple variables with integer coefficients. The goal
+  is to find all integer solutions, but this can be hard (Fermat's Last
+  Theorem anyone?) Reduction modulo an integer can help because there
+  are now only finitely many possibilities. \exercise{Consider the
+    equation $x^2+y^2=3z^2$. Show that the only integer solution to
+    this equation is the trivial one ($x=y=z=0$) by reducing modulo
+    $4$ and investigating the perfect squares in this ring.}
+\item[Exercise: ideal algebra] There are some nice algebraic steps
+  that can be carried out with ideals. Let $I$ and $J$ be two-sided ideals:
+  \begin{itemize}
+  \item \exercise{Show that the sum of $I$ and $J$, defined by 
+      \[I+J=\{a+b\mid a\in I,\ b\in J\}.\]}
+  \item \exercise{Show that the product of $I$ and $J$, defined as the
+      set of all finite sums of elements $ab$ where $a\in I$ and $b\in
+      B$ is a two-sided ideal.}
+\item $I^n:=I^{n-1} I$ are the powers, defined inductively. 
+\item \exercise{Suppose that $\{I_j \mid j\in \Omega\}$ is a set of
+    ideals in a ring $I$ (where $\Omega$ is a not-necessarily-finite
+    index set). Prove that $\bigcap\limits_{j\in \Omega} I_j$ is an
+    ideal.}
+\item \exercise{Suppose that $I_1\subset I_2\subset \dotsc$ is a set
+    of ideals in a ring $R$ that form a chain. Prove that
+    $\bigcup\limits_{n=1}^\infty I_n$ is an ideal. }
+  \end{itemize}
+\item[Exercise: more ideal algebra] Suppose that $m,n\in \bbZ$ and
+  consider the ideals $m\bbZ$ and $n\bbZ$ in $\bbZ$. \exercise{Express
+    the ideal $m\bbZ+n\bbZ$ as an ideal of the form $d\bbZ$. I.e.,
+    what is $d$ and why?} \exercise{Express the ideal $(m\bbZ)(n\bbZ)$
+    as an ideal of the form $d\bbZ$.}
+\item[Exercise: the isomorphism theorems] \ Throughout, $R$ is a ring
+  with identity.
+  \begin{enumerate}
+  \item \exercise{Suppose that $A$ is a subring of $R$ and $I$ is an
+      ideal of $R$. The set $A+I$ is defined to be the set $\{a+y\mid
+      a\in A,\ y\in I\}$. Prove that 
+      \[(A+I)/I \cong A/(A\cap I).\]}
+  \item \exercise{Suppose that $I\subset J \subset R$ is a chain of
+      ideals in $R$. Prove that $(R/I)/(J/I) \cong R/J$. }
+  \item \exercise{Prove that there is a bijection between the set of
+      ideals in $R$ containing $I$ and ideals in $R/I$. }
+  \end{enumerate}
+\end{description}
+
+\subsection{Properties of ideals}
+\label{sec:properties-ideals}
+
+\begin{description}
+\item[Definitions] Let $A$ be a subset of a ring $R$, a ring with identity.
+  \begin{enumerate}
+  \item We denote by $(A)$ the smallest ideal of $R$ containing
+    $A$, called the \emph{ideal generated by $A$}. [Note: this is the
+    intersection of all ideals that contain $A$, so by above
+    exercises, it is clearly an ideal.]
+  \item We have the following:
+    \begin{align*}
+      RA &= \{r_1a_1+\dotsc + r_n a_n \mid r_i\in R,\ a_i\in A\}\\
+      AR &= \{a_1r_1+\dotsc + a_n r_n\mid r_i\in R,\ a_i\in A\}\\
+      RAR&= \{r_1a_1r_1'+\dotsc + r_na_nr_n' \mid r_i, r_i'\in R,\
+           a_i\in A\}.
+    \end{align*}
+  \item An ideal that can be generated by a single element is a
+    \emph{principal ideal};
+  \item An ideal that can be generated by a finite set of elements is
+    called \emph{finitely generated}. 
+  \end{enumerate}
+\item[Exercises] \ 
+  \begin{enumerate}
+  \item \exercise{Prove that every ideal in $\bbZ$ is a principal
+      ideal.$\star$}
+  \item \exercise{Show that the ideal $(2,x)\subset \bbZ[x]$ is
+      \emph{not} a principal ideal.}
+  \item \exercise{Suppose that $R$ is a ring with identity and $I$ is
+      a two-sided ideal in
+      $R$. Prove that $I=R$ if and only if $I$ contains an invertible
+      element. }
+    \item \exercise{Suppose that $R$ is a commutative ring. Prove
+    that $R$ is a field if and only if its only ideals are $R$ and
+    $0$. As a corollary, prove that if $F$ is a field and $\varphi:
+    F\rightarrow R'$ is a non-zero ring homomorphism, then $\varphi$
+    is injective.}
+\item \exercise{Suppose that $I$ is a two-sided ideal in the matrix ring
+    $M_n(\bbC)$.} 
+  \end{enumerate}
+\item[Remark] If we're thinking about substructures within algebraic structures, it
+often makes sense to ask about the smallest among them and the
+largest. Of course, the smallest ideal in a ring $R$ is $\{0\}$, and
+the largest is $R$. But perhaps we'd want to avoid those. It turns out
+that the large non-trivial ones are really interesting (but you're free to think
+about what the smallest might look like). 
+\item[Definition: maximal] A two-sided ideal $\frak{m}\subsetneq R$ is called
+  \emph{maximal} if there are no ideals $I$ with $\frak{m}\subsetneq I
+  \subsetneq R$. 
+\item[Exercise: Using Zorn's Lemma] \exercise{Prove that every ring
+    $R$ with identity $1\neq 0$ has at least one maximal ideal. The
+    proof of existence of some maximal element is often achieved using
+    Zorn's lemma, which you can find in the Appendix in Dummit and
+    Foote.}
+\item[Exercises] \ 
+  \begin{enumerate}
+  \item \exercise{Suppose that $R$ is a commutative ring with
+      identity. Prove that an ideal $\frak{m}\subsetneq R$ is a
+      maximal ideal if and only if $R/\frak{m}$ is a field. }
+This exercise is vitally important for the study of Fields and Galois
+Theory. It says that if you can construct a commutative ring, $R$ and
+a maximal ideal $\frak{m}$ within, then $R/\frak{m}$ is a field. As an
+example, see the next exercise. 
+\item \exercise{Consider the ring $\bbR[x]$. Prove that the ideal
+    $(x^2+1)$ is a maximal ideal, then show that $\bbR[x]/(x^2+1)$ is
+    isomorphic to a field that you're very familiar with.}
+\item \exercise{Prove that $\bbZ/p\bbZ$ is a field if and only if $p$
+    is a prime number.}
+  \end{enumerate}
+\item[Remark] Now let's think about generalizing some behavior within
+  the integers. A positive integer $p>1$ is \emph{prime} if $ab=p$ implies
+  $a=\pm 1$
+  or $b=\pm 1$. But the really nice property is that if $ab$ is a
+  multiple of $p$, then $p\mid a$ or $p mid b$.  When we cast that into the ideal corresponding to $p$, $(p)$,
+  that means that if $ab\in (p)$, then $a\in (p)$ or $b\in (p)$. This
+  inspires the following. 
+\item[Definition: Primeness] Let $R$ be a commutative ring. An ideal
+  $P\neq R$ is called \emph{prime} if $ab\in P$ implies that $a\in P$
+  or $b\in P$. 
+\item[Exercises] \ 
+  \begin{enumerate}
+  \item \exercise{Let $R=\bbQ[x,y]$. Prove that the set of polynomials
+      in $R$ with 0 constant term is maximal, the ideal of all
+      multiples of $x$ is prime but not maximal, and the ideal of all
+      multiples of $xy$ is not prime and not maximal. }
+  \item \exercise{Suppose that $R$ is a commutative ring. Prove that
+      an ideal $P\subset R$ is prime if and only if $R/P$ is an
+      integral domain. As a corollary, show that all maximal ideals
+      are prime ideals.}
+  \item \exercise{Prove that $(2,x)$ is a maximal ideal in $\bbZ[x]$.}
+  \item \exercise{Let's write $F_2=\bbZ/2\bbZ$, the field with two
+      elements. Consider the ideal $I$ in $F_2[x]$ generated by
+      $(x^2+x+1)$. Prove that $I$ is a maximal ideal, and determine
+      the addition and multiplication table for the field
+      $F_2[x]/(x^2+x+1)$. Congratulations! You've witnessed a field
+      with $4$ elements.}
+  \end{enumerate}
+\item[Concluding Remarks] What is happening here? First, recall that
+  we might start by being interested in integral solutions to
+  equations of the form $p(x_1,x_2,\dotsc, x_n)=0$. For example,
+  $x^2+y^2-3z^2=0$. We witnessed a while back that if we were to
+  reduce the coefficient set modulo 4 (i.e., reduce the polynomial via
+  the ideal generated by 4) it could help us understand or restrict
+  the possibilities. Think about the following progression:
+  \begin{enumerate}
+  \item When we only had the natural numbers, we had no solutions to
+    the equations of the form $x+a=b$ when $b<a$. How frustrating! So
+    let's introduce the integers. We now have additive inverses
+    \emph{and} multiplication. 
+  \item We notice that we have this nice property that if $a\neq 0$,
+    then $ax=ay$ if and only if $x=y$. So cancellation works.
+  \item But we also notice we don't \emph{always} have solutions to
+    equations of the form $ax=b$, though when we do, we only have
+    one. Why is that... and how could we break it? So let's introduce
+    division. Now we have the rational numbers.
+  \item Over the rationals, we can solve all equations of the form
+    $ax=b$ when $a\neq 0$. Great!
+  \item What about polynomials? A polynomial of degree $d$ with
+    rational coefficients doesn't always have all of its roots
+    rational, but in general there are at least $d$ of these roots
+    (counting multiplicity). Cool. What do we have to do to get the
+    rest of these roots? It turns out going to the reals isn't enough,
+    so we actually have to pass to the complex numbers. That leap is
+    two steps. The first is using analysis to pass to the real
+    numbers, then using ring theory to pass to the complex numbers.
+  \end{enumerate}
+
+\end{description}
+
+\subsection{Rings of fractions: localization}
+\label{sec:rings-fractions}
+
+Let's focus on the step from the integers to the rational numbers. The
+idea is that the integers weren't robust enough to have solutions to
+all equations of the form $ax=b$ where $a,b\in \bbZ$ and $a$ is
+non-zero (if $a=0$, then $b$ must be zero to admit any solutions, and
+we don't have a problem with that). So
+we introduce inverses.
+\begin{description}
+\item[Remark] Fractions in the realm of integers goes like this: we
+  consider the set of ordered pairs $(a,b)$ where $b\neq 0$. The first
+  component is the numerator, and the second component is the
+  denominator. Now we want to declare $(a,b)$ to be equivalent to
+  $(c,d)$ when $ax=b$ has the same solution as $cx=d$. This would
+  imply that $axd=cxb$, or $(ad-bc)x=0$. If we assume $R$ is an
+  integral domain, then this means $x=0$ or $ad-bc=0$. I.e.,
+  $ad=bc$. Look familiar? So we have a set of ordered pairs $\{(a,b)
+  \mid a,b\in R,\ b\neq 0\}$ and an equivalence relation $(a,b)\sim
+  (c,d)$ if $ad=bc$. Can we define arithmetic? 
+\item[Theorem: Inversion] Suppose that $R$ is a commutative ring with identity and
+  that $D\subset R$ is a \emph{multiplicative set}. I.e., if $a,b\in
+  D$, then $ab\in D$, and furthermore $1\in D$. There is a ring
+  $D^{-1}R$ with the following properties:
+  \begin{itemize}
+  \item There exists a homomorphism $\phi: R\rightarrow D^{-1}R$;
+  \item If $d\in D$, then $\phi(d)$ is a unit in $D^{-1}R$;
+  \item If there is any other ring $T$ and ring homomorphism $f:
+    R\rightarrow T$ such that $f(d)\in T^*$ for all $d\in D$, then
+    there exists a unique ring homomorphism $\tilde{f}:D^{-1}R\rightarrow T$
+    such that $\tilde{f}\circ \phi = f$. 
+  \end{itemize}
+$D^{-1}R$ is referred to as the \emph{localization} of $R$ with
+respect to $D$, or the ring of fractions of $D$ in $R$. 
+\item[Exercises]\ 
+  \begin{enumerate}
+  \item \exercise{Consider the set $R\times D$ of ordered pairs and define a
+    relation $\sim_D$ via $(r_1,d_1)\sim (r_2,d_2)$ if there exists an
+    element $t\in D$ such that $t(r_1d_2-r_2d_1)=0$. Show that
+    $\sim_D$ is an equivalence relation on $R\times D$.}
+  \item \exercise{We define addition and multiplication on $R\times D$ in the
+    way that we do on fractions:
+    \begin{align*}
+      (r_1,d_1)\cdot (r_2,d_2)&=(r_1r_2,d_1d_2)\\
+      (r_1,d_1)+(r_2,d_2) &= (r_1d_2+r_2d_1,d_1d_2)
+    \end{align*}
+Prove that these operations are well-defined on $R\times D/\sim_D$. }
+\item \exercise{Show that $R\times D/\sim_D$ is a ring with identity $(d,d)$ for
+  any $d\in D$. (If we hadn't assumed that $R$ was a ring with
+  identity, but had that $D$ was non-empty, this would give us an
+  identity in $D^{-1}R$.)}
+\item \exercise{Prove that the map $\phi: R\rightarrow D^{-1}R$ defined by
+  $\phi(r)=(r,1)$ is a ring homomorphism and that $\phi(d)$ is a unit
+  in $D^{-1}R$. }
+\item \exercise{Prove that the above map is one-to-one if and only if $D$
+  contains no zero-divisors. In particular, if $R$ is an integral
+  domain and $0\not\in D$, this is always the case.}
+\item \exercise{Lemma: Prove that if $f: R\rightarrow T$ is a ring
+    homomorphism and that $f(1_R)\neq 1_T$ then
+    $\operatorname{image}(f)\subset \operatorname{ZD}(T)$. In
+    particular, $f(r)\not\in T^*$ for all $a\in R$.}
+\item \exercise{Lemma: Prove that if $f: R\rightarrow T$ is a ring
+    homomorphism with $f(1_R)=1_T$ and $d\in R^*$ then
+    $f(d^{-1})=f(d)^{-1}$ (in particular, $f(d)$ is invertible).}
+\item \exercise{Prove the universal property of $D^{-1}R$: If $T$ is
+    any ring and $f: R\rightarrow T$ is a ring homomorphism such that
+    $f(d)\in T^*$ for all $d\in D$, then there exists a unique ring
+    homomorphism $\tilde{f}: D^{-1}R\rightarrow T$ such that
+    $\tilde{f}\circ \phi = f$. }
+  \end{enumerate}
+\item[Remark] The word \emph{universal property} showed up above, and
+  it might seem strange. This starts a light conversation about
+  categories. Much more is to be said, but a universal property gives
+  us a way to define the type of behaviour we want to see (like
+  invertibility of the elements of $D$) and determine if there is a
+  unique way to define this structure. 
+\item[Remark] If $R$ is a field and $0\notin D$, then $D^{-1}R\cong
+  R$. If $R$ is an integral domain and $D=R\setminus \{0\}$, then
+  $D^{-1}R$ is a field... and this is what we wanted in the first
+  place.
+\item[Exercise] \exercise{Consider $\bbZ$ and the two subsets $D=2\bbZ$ and $S=\{2^n
+  \mid n\in \bbZ_{\geq 0}\}$. Describe $D^{-1}\bbZ$ and
+  $S^{-1}\bbZ$. Are they isomorphic? }
+\item[Exercise] \exercise{If $d\in R$ is not zero and not a zero-divisor, then
+  define $d^{\bbZ}=\{1,d,d^2,\dotsc,\}$. Then $(d^\bbZ)^{-1}R$ is like
+  the ring of polynomials in the variable $1/d$, which we write
+  $R[1/d]$. (There's something to prove here: that the powers are
+  really independent.)}
+\item[Exercise] \exercise{If $R$ is an integral domain and $F$ is a field
+  containing $R$, then $F$ contains $\calQ R$ is isomorphic to a
+  subfield of $F$. }
+\item[Exercise] \exercise{Let $R$ be an integral domain and $D$ be a
+  multiplicative set. Then there is a bijection between prime ideals
+  in $D^{-1}R$ and prime ideals in $R$ not intersecting $D$. }
+\item[Exercise] \exercise{A commutative ring is called \emph{local} if it has a
+  unique maximal ideal $\mathfrak{m}$. Prove that $R-\mathfrak{m}=R^*$
+  if $R$ is a local ring. }
+\item[Exercise] \exercise{Consider the commutative ring with identity
+    $R$ and a multiplicative set $S$. Prove that the localization
+    $\varphi$ furnishes a bijection between the set of prime ideals in
+    $R$ not intersecting $S$ and the prime ideals in $S^{-1}R$. }
+\item[Exercise] \exercise{Let $p$ be a prime integer, and consider $S$
+    the multiplicative set of integers that are \emph{not} multiples
+    of $p$. (Note, this is precisely the complement of $(p)$ in
+    $\bbZ$.) The localization $S^{-1}\bbZ$ is often denoted
+    $\bbZ_{(p)}$. Prove that $\bbZ_{(p)}$ is a local ring with maximal
+    ideal $\{\frac{t}{q} \mid t\in (p), q\in S\}$. (You may refer to
+    the previous exercise.)}
+\end{description}
+
+\subsection{Interlude: Categories}
+\label{sec:interl-categ-1}
+
+
+A \emph{category} $\calC$ is a pair with a class of objects,
+$\obj(\calC)$ and a set $\mor_\calC(A,B)$ for all pairs of objects
+$A,B$ in $\calC$ such that for each triple of objects $A,B,C\in
+\obj(\calC)$, there is a function $\circ: \mor_{\calC}(B,C)\times
+\mor_\calC(A,B)\rightarrow \mor_\calC(A,C)$ known as
+\emph{composition} that is associative on 4-tuples of objects. We
+further insist that for every object $X\in \calC$, there is an element
+$1_X \in \mor_\calC(X,X)$ such that $1_X\circ f = f$ and $g\circ
+1_X=g$ for all $f\in \mor_\calC(Y,X)$ and $g\in \mor_\calC(X,Z)$. 
+
+\begin{description}
+\item[Examples]\
+  \begin{enumerate}
+  \item Let $\calC$ be the category whose objects are the positive
+    integers, with $\mor_\calC (m,n)=\begin{cases} \{n/m\} & \textrm{if
+        divisible}\\ \emptyset & \textrm{otherwise}\end{cases}$. So
+    the \emph{morphism} set from $m$ to $n$ is either a singleton if
+    $m$ doesn't divide $n$, and empty otherwise. We also need to
+    furnish a \emph{composition} of functions! What should $\circ:
+    \mor_\calC(m,n) \times \mor_\calC(l,m)\rightarrow \mor_\calC(l,n)$
+    do? Let's assume that there \emph{is} a divisibility, that $l \mid
+    m$ and $m\mid n$. Then $l\mid n$ and its morphism is $n/l$ which
+    is equal to $n/m \cdot m/l$. So let's say:
+    \begin{align*}
+      (n/m) \circ (m/l) &= n/l
+    \end{align*}
+but if either set is empty, then the codomain is empty, so composition
+is just the trivial map from empty set to empty set. 
+
+This category already has an interesting object: an \emph{initial}
+object, an object $\chi$ with the property that
+$\mor_\calC(\chi,n)\neq \emptyset$ for all $n\in \obj(\calC)$. What is
+it? Is it unique? Why? Does it have a \emph{dual} notion?
+\item Let $\Ab$ be the category whose objects are finite abelian
+  groups, and whose morphism sets are the set of group
+  homomorphisms, with composition being... composition. Notice that the kernel of such a homomorphism is
+  still a finite abelian group and the cokernel is also. This is
+  called an \emph{abelian} category. 
+\item Let $\mathcal{S}et$ be the category whose objects are sets and whose
+  morphisms are set functions. Composition is just composition. What
+  is the \emph{initial} object here? Can you realize intersection as
+  an object with a universal property? What about union?
+\item Vector spaces over a given field, with linear transformations. 
+\item Topological spaces with continuous maps.
+\item Products are universal objects, that may or may not exist:
+  \fbox{Definition:} Let $I$ be an indexing set, and let $R_i$ be an
+  object for each index $i\in I$. A \emph{product} of $R_i$, denoted
+  $\prod\limits_{i\in I} R_i$ is an object with a morphism $p_j:
+  \prod\limits_{i\in I} R_i \rightarrow R_j$ for each $j\in I$
+  satisfying the following universal property: if $T$ is any other
+  object in $\calC$ with morphisms $\varphi_j: T\rightarrow R_j$ for
+  each $j\in J$, then there is a unique map $\Phi: \prod\limits_{i\in
+    I} R_i\rightarrow T$ such that $\varphi_j \circ \Phi = p_j$ for
+  each $j\in J$. 
+\item You can check that the product of rings is such a universal
+  object. 
+\item 
+  \end{enumerate}
+
+\end{description}
+
+
+\subsection{Chinese remainder theorem}
+\label{sec:chin-rema-theor}
+
+The defining structure of rings comes partly from the ring of
+integers, so let's spend a little bit of time on them. We've already
+seen that every ideal in $\bbZ$ is principal. In particular, every
+quotient of $\bbZ$ is of the form $\bbZ/n\bbZ$. But does this
+\emph{decompose} further? 
+\begin{description}
+\item[Definition] Ideals $A$ and $B$ in a ring $R$ are called
+  \emph{comaximal} if $A+B=R$. 
+\item[Theorem: Chinese Remainder Theorem] Let $A_1,\dotsc, A_k$ be
+  ideals in a commutative ring $R$ with identity. Then the map
+  \begin{align*}
+    R& \rightarrow R/A_1 \times R/A_2 \times \dotsc \times R/A_k\\
+    r &\mapsto (r+A_1,r+A_2,\dotsc, r+A_k)
+  \end{align*}
+is a ring homomorphism with kernel $A_1\cap A_2 \cap \dotsc \cap
+A_i$. If for each pair $i,j$ with $i\neq j$ we hav $A_i$ and $A_j$ are
+comaximal, then the map is surjective, and the kernel is $A_1A_2\cdots
+A_k$. Thus, \[R/(A_1A_2\cdots A_k) = R/(A_1\cap A_2\cap \dotsc \cap
+  A_k) \cong R/A_1 \times \dotsc \times R/A_k.\]
+\item[Note] Note that if $A_i$ are principal ideals generated by
+  $a_i$, then $A_1A_2\cdots A_k=(a_1a_2\cdots a_k)$. 
+\item[Proof] Let's work with $k=2$. Consider $\varphi: R\rightarrow
+  R/A \times R/B$ with $\varphi(r) = (r+A,r+B)$. Ring homomorphism is
+  easy, the kernel is those elements with $\varphi(r)=(0+A,0+B)$ which
+  means $r\in A$ and $r\in B$, so the intersection. Assuming $A$ and
+  $B$ are comaximal, this means $1=a+b$ for some $a\in A$ and $b\in
+  B$. But then $\varphi(r_1a+r_2b)=(r_1a+r_2(1-a) + A,
+  r_1(1-b)+r_2b+B)$, which is $(r_2+A,r_1+B)$, so $\varphi$ is
+  onto. Clearly $AB\subset A\cap B$ by the absorption property. Now
+  suppose that $x\in A\cap B$. Then $x=x(a+b)=xa+xb$. $xa\in AB$ since
+  $x\in B$, and $xb\in AB$ since $x\in A$. Thus, the result is proven.
+\item[Exercise: The case of the integers] Consider the case of the integers. \exercise{Prove
+    that two ideals $(n)$ and $(m)$ are comaximal if and only if
+    $\gcd(m,n)=1$. } 
+\item[Exercise] \exercise{Describe the ideal $(n)\cap (m)$ in
+    terms of number theory.} 
+\item[Exercise] \exercise{For each integer $n$, let us
+    denote by $\varphi(n)$ the number units in $\bbZ/n\bbZ$. Find a
+    formula for $\varphi(p^k)$ when $p$ is prime and $k$ is a positive
+    integer.} 
+\item[Exercise] \exercise{Prove that if $m$ and $n$ are relatively
+    prime, then $\varphi(m\cdot n) = \varphi(m)\cdot \varphi(n)$. You
+    may want to consider how to relate the set of units in the ring
+    $R\times S$ to the set of units in $R$ and $S$ separately. }
+\item[Exercise: central idempotents] Let $R$ be a ring (not necessarily commutative) with identity $1\neq 0$. An element $e\in R$ is called an
+  \emph{idempotent} if $e^2=e$. \exercise{Prove that $1-e$ is also an
+    idempotent, and that both $e$ and $1-e$ are non-trivial zero
+    divisors when $e\neq 1$ and $e\neq 0$. }
+\item[Exercise] \exercise{Prove that if
+    $e$ is an idempotent such that $re=er$ for each $r\in R$, then in
+    the two-sided ideal $Re$, the element $e$ is the identity.}
+\item[Exercise] \exercise{Show that if $re=er$ for all $r\in R$, then $R\cong
+    Re\times R(1-e)$ by using the theorem above.}
+\end{description}
+
+\section{Special Classes of Domains}
+\label{sec:spec-class-doma} 
+
+Many rings appearing in number theory have interesting structure that
+we should identify and study. We only take on commutative domains in
+this chapter.
+
+\subsection{Euclidean domains}
+\label{sec:euclidean-domains}
+
+Inspired by the Euclidean algorithm, we seek integral domains that
+have such an algorithm.   
+
+\begin{description}
+\item[Definition: Norm] A function $N: R\rightarrow \bbZ_{\geq 0}$
+  with $N(0)=0$ is called a \emph{norm} on $R$. If, in addition,
+  $N(\alpha)>0$ for all $\alpha R\setminus \{0\}$, then $N$ is a
+  positive norm.
+\item[Remark] Very vague, not much there. 
+\item[Definition: Euclidean domain] A domain $R$ is called a
+  \emph{Euclidean Domain} if it admits a norm $N$ relative to which
+  $R$ has a division algorithm. That is, for any $a,b\in R$ with
+  $b\neq 0$, there exist elements $q,r\in R$ such that
+  \begin{align*}
+    a&=qb+r\\
+\operatorname{such that} r &=0\\
+\operatorname{or}\ N(r) &<b
+  \end{align*}
+$q$ is called the \emph{quotient} and $r$ the \emph{remainder}.
+\item[Examples] Clearly $\bbZ$ is an example of a Euclidean domain,
+  as is $F[x]$ for any field $F$. 
+\item[Euclidean Algorithm] The importance is that there is a
+  Euclidean Algorithm:
+  \begin{align*}
+    a&=q_0b+r_0\\
+    b&= q_1r_0+r_1\\
+    r_0&=q_2r_1+r_2\\
+    \vdots & \vdots\\
+    r_{n-2} & =q_nr_{n-1}+r_n\\
+r_{n-1}&= q_{n+1}r_n
+  \end{align*}
+where in each case we have divided $r_i$ by $r_{i+1}$ to get to the
+next line. Since $N(r_1)>\dotsc > N(r_n)$, is a decreasing sequence
+bounded below by zero, it must terminate, and it can only terminate if
+$r_{n+1}=0$. 
+\item[Why do we like it?] What's nice now is that $r_n$ can be
+  expressed as an $R$ combination of $a$ and $b$ (so, for example, if
+  $a$ and $b$ are in an ideal, so must $r_n$ be).
+\item[Exercise] Consider the rings of the form $R=\bbZ[\sqrt{d}]$ where
+  $d\in \bbZ$. Define $N:R\rightarrow \bbZ$ via $N(a+b\sqrt{d}) =
+  (a+b\sqrt{d})(a-b\sqrt{d})=a^2-b^2d$. \exercise{Prove that this is a
+  \emph{multiplicative norm} when $d\leq 0$. (Multiplicative means
+  $N(z\cdot z')=N(z)\cdot N(z')$ for any $z,z'\in R$.)}
+\item[Exercise] Consider the ring $R=\bbZ[i]$ and elements
+  $\alpha=a+bi$ and $\beta=c+di$ with $\beta \neq 0$. In the field
+  $\bbQ(i)$, $\frac{\alpha}{\beta} = r+si$ with $r,s\in \bbQ$ (by rationalizing the
+  denominator). Round $r,s$ to the nearest integer, call it
+  $\overline{r}, \overline{s}$. Then $\lvert r-\overline{r}\rvert \leq
+  1/2,$ and $\lvert s-\overline{s}\rvert \leq 1/2$. Define
+  $\gamma=\beta\left[(r-\overline{r})+(s-\overline{s})i\right]$. \exercise{Prove
+    that $\alpha=(p+qi)\beta+\gamma$, and that $\gamma \in \bbZ[i].$}
+  \exercise{Prove that $N(\gamma) \leq \frac{1}{2}N(\beta)$ (hint: use multiplicativity).}
+\end{description}
+
+\subsection{Principle ideal domain} 
+\label{sec:princ-ideal-doma}
+
+\subsection{Unique factorization domains}
+\label{sec:uniq-fact-doma}
+
+\subsection{Polynomial rings I}
+\label{sec:polynomial-rings-i}
+
+\section{Modules}
+\label{sec:modules}
+
+\subsection{Basic definitions}
+\label{sec:basic-definitions}
+
+\subsection{Module homomorphisms}
+\label{sec:module-homomorphisms}
+
+\subsection{Generation of modules, direct sums, and free modules}
+\label{sec:gener-modul-direct}
+
+\subsection{Interlude: categories}
+\label{sec:interl-categ}
+
+\begin{description}
+\item[Definition: Category] 
+\item[Examples] 
+\item[Definition: monomorphism/epimorphism]
+\item[Definition: product/coproduct] 
+\end{description}
+
+\subsection{Tensor products of modules}
+\label{sec:tens-prod-modul}
+
+\subsection{Exact sequences and special modules}
+\label{sec:exact-sequ-spec}
+
+\section{Algebraic geometry}
+\label{sec:algebraic-geometry}
+
+
+\end{document}
+2018/01/02 02:54:54
