@@ -1,5 +1,3 @@
 # MAT473
 
-Files from my Rings and Modules course
-
-Includes .tex files for the assigned homeworks as well as a "Topics.tex" file, which contains my notes. Exercises in red are available for student presentation during class. 
+Files from my Rings and Modules course. The course meets over the span of 10 weeks (one three-hour meeting per week), and is supposed to serve as an introduction the the fundamentals of ring theory and the mining of modules for information about rings (and vise-versa). The "Administration" folder contains the syllabus, "Course Notes" contains the course notes, which include exercises for students to complete and present, "Exams" contains the midterm and final exams, and "Homeworks" contains the weekly homework assignments.
