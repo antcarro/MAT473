@@ -1,0 +1,342 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,amssymb,dsfont,enumerate,color}
+\usepackage[top=1in, bottom=1in]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\tdplotsetmaincoords{70}{110}
+\usetikzlibrary{arrows.meta}
+\fancyhead[L]{MAT473: Homework 7}
+\fancyhead[R]{ }
+\fancyfoot[L]{}
+\fancyfoot[R]{\large \thepage}
+\fancyfoot[C]{}
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbk}{\mathbb{k}}
+
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+\newcommand{\iitem}{\vfill \item}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\topic}[1]{\textcolor{blue}{#1}}
+\newcommand{\answerbox}{\begin{flushright}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (5,-1.75);
+    \end{tikzpicture}\end{flushright}}
+\newcommand{\solution}[1]{\textcolor{red}{#1}}
+\newcommand{\points}[1]{\ [#1pts]}
+%\renewcommand{\solution}[1]{}
+
+\begin{document}
+\pagestyle{fancy}
+
+\begin{enumerate}
+\item[]\ A few notes about the tensor product. 
+\begin{itemize}
+\item[a.] If $v\otimes w=0$ in $V\otimes_R W$, this means that $B(v,w)=0$
+  for \emph{every} bilinear map $B: V\times W \rightarrow P$ (otherwise,
+  the universal property would fail!). So if you can find a bilinear
+  map such that $B(v,w)\neq 0$, then $v\otimes w \neq 0$.
+\item[b.] If $\sum_i a_i v_i \otimes w_i=0$, then this means that $\sum_i
+  a_i B(v_i,w_i)=0$ for \emph{every} bilinear maps $B: V\times W \rightarrow P$
+  (otherwise, the universal property would fail!). So if you can find
+  a bilinear map such that $\sum_i a_i B(v_i,w_i)\neq 0$, then the sum
+  of the tensors cannot be zero.
+\item[c.] If $V\otimes W=0$, then this means that there \emph{are no
+    bilinear maps} $B: V\times W \rightarrow P$ for any $R$ module
+  $P$. 
+\end{itemize}
+\end{enumerate}
+\begin{enumerate}
+\item Let $R$ be a commutative ring and $I, J$ be ideals in $R$. Prove
+  that $R/I\otimes_R R/J \cong R/(I+J)$. \footnote{Hint: Use
+    multiplication as your bilinear map, but you must show it is
+    well-defined.}
+\solution{
+Consider the function $B: R/I \times R/J \rightarrow R/(I+J)$ defined
+by $B(r_1+I, r_2+J) = r_1r_2+(I+J)$.
+\begin{enumerate}
+\item $B$ is well-defined: let $r_1'+I=r_1+I$. Then $r_1'=r_1+i$ for
+  some $i\in I$. Thus, $B(r_1'+I,r_2+J)=r_1'r_2+(I+J) =
+  (r_1+i)r_2+(I+J) = r_1r_2+(i r_2+I+J)$ but
+  $r_1r_2+ir_2-r_1r_2=ir_2\in I \subset I+J$, so $B(r_1'+I,r_2+J)
+  =B(r_1+I,r_2+J)$. The other side is similar. 
+\item $B$ is bilinear: $B((r_1+r_1')+I, r_2+J) = (r_1+r_1')r_2+(I+J) =
+  r_1r_2+r_1'r_2+(I+J) = B(r_1+I, r_2+J)+B(r_1'+I,r_2+J)$. Also,
+  $B(\lambda r_1+I, r_2+J)= \lambda r_1r_2 + (I+J) = \lambda
+  (r_1r_2+(I+J)) =\lambda B(r_1+I, r_2+J)$. 
+\item Thus, we have a homomorphism $\Phi: R/I \otimes_R R/J
+  \rightarrow R/(I+J)$ with $\Phi( (r_1+I)\otimes (r_2+J)) = r_1r_2 +
+  (I+J).$. 
+\item To show that $\Phi$ is onto, it's enough to show that $1+(I+J)$
+  is in the image of $\Phi$. This is true, for example, because
+  $\Phi(1+I, 1+J) = 1+(I+J).$
+\item Now consider $x=\sum\limits_i c_i (r_i +I)\otimes (r_i'+J)\in
+  R/I\otimes R/J$. Using
+  linearity in the first component, we can factor out $r_i$ and
+  similarly, we factor out $r_i'$ from the second. Hence, $x=\sum_i
+  c_ir_ir_i' (1+I)\otimes (1+J)$. Then we'll reabsorb the sum and the
+  coefficients into the second component, say, so $x=(1+I)\otimes
+  (\sum_i c_i r_ir_i')+J$. Assume that $\Phi(x)=0$. Then $\sum_i c_i
+  r_i r_i' \in I+J$, so $\sum_i c_i r_i r_i'= z+z'$ where $z\in I$ and
+  $z'\in J$. So $x=(1+I)\otimes (z+z'+J) = (1+I)\otimes (z+J)=
+  z(1+I)\otimes (1+J) = (z+I) \otimes (1+J) = 0\otimes (1+J) =
+  0$. Hence, $\ker \Phi=0$, so $\Phi$ is injective. 
+\end{enumerate}
+}
+\item Let $V=F^n, W=F^m$ be two finite-dimensional vector spaces over
+  a field $F$. Let $A$ be a matrix in $\operatorname{Mat}_{n\times
+    m}(F)$. Prove that the function $B: V\times W \rightarrow F$
+  defined by $B(v,w) = v^T A w$ is a bilinear map. \footnote{If $n=m$ and $A$ is the identity matrix, $B(v,w)$ is
+    simply the dot product. So this is a generalization of that idea.}
+\solution{
+$B(v+v',w) = (v+v')^TAw = v^TAw+v'^TAw$, which holds on the other side
+as well. Further, $B(\lambda v, w) = (\lambda v)^T Aw = \lambda v^T Aw
+= \lambda B(v,w)$, and similarly on the other side. Hence, $B$ is
+bilinear.} (This means that every inner product on $V\times W$ gives a
+homomorphism $V\otimes W\rightarrow F$, and vise-versa.)
+\item Suppose that $V$ and $W$ are vector spaces over a field $F$ with
+  bases $\calB=\{e_i\}_{i\in I}$ and $\calC=\{f_j\}_{j\in J}$. Our goal is to
+  prove that the set $\calB \otimes \calC:=\{e_i\otimes f_j\}_{\substack{i\in I\\ j\in J}}$ is a
+    basis for $V\otimes W$.
+    \begin{itemize}
+    \item[i.] Prove that $\calB\otimes \calC$ spans $V\otimes W$. 
+\solution{
+We know already that $V\otimes W$ is spanned by tensors $v\otimes w$,
+so if we can show that every tensor of this form is a linear
+combination of the elements of $\calB\otimes \calC$, we're done. Since
+the $e_i $ form a basis for $V$, and similarly with $f_j$, write
+\begin{align*}
+  v&= \sum_i \lambda_i e_i \\
+w &= \sum_j \mu_j f_j 
+\end{align*}
+Then using the multilinearity
+\begin{align*}
+  v\otimes w &= (\sum_i \lambda_i e_i) \otimes (\sum_j \mu_j f_j) \\
+&= \sum_{i,j} \lambda_i \mu_j (e_i \otimes f_j) 
+\end{align*}
+so indeed, $v\otimes w$ is a linear combination of the elements in
+$\calB \otimes \calC$. 
+}
+    \item[ii.] For any pair of integers $k\in I$ and $l\in J$, define the
+      function 
+      \begin{align*}
+        B_{kl}: V\times W &\rightarrow F\\
+        B_{kl}(v,w) & = [v]_k[w_l]
+      \end{align*}
+the product of the $k$-coordinate of $v$ and the $l$ coordinate of
+$w$. (This can also be realized as $v^T(e_ke_l^T)w$.) Prove that
+$B_{kl}(v,w)$ is bilinear (see problem 2). 
+\solution{For each $k,l$, $e_ke_l^T$ is a matrix, so $B_{kl}(v,w) =
+  v^T A w$. By problem 2, then, $B$ is bilinear. }
+\item[iii.] Utilize the map from part (ii) to prove that $\calB\otimes
+  \calC$ is a linearly independent set.  (Hint: use remark (b) from
+    the notes at the top of the page!)
+\solution{
+Suppose that there is a linear dependence:
+\begin{align*}
+  \sum\limits_{i,j} a_{ij} e_i \otimes f_j &= 0.
+\end{align*}
+By the note at the top, then,
+\begin{align*}
+\star  \sum\limits_{i,j} a_{ij} B_{kl}(e_i,f_j) &= 0
+\end{align*}
+for \emph{any choice} of integers $k,l$. However, $[e_i]_k
+= \begin{cases} 1 & i=k\\ 0 & i\neq k\end{cases}$ and similarly with
+$j$ and $l$. Hence, $\star$ really says that $a_{kl} (1) =0$ for each
+$k,l$, so $\calB\otimes \calC$ is linearly independent. }
+
+    \end{itemize}
+  \item Complete the work we started in class: Prove that if $V$ and
+    $W$ are finite-dimensional vector spaces over a field $F$, then $V^*\otimes W \cong
+    \Hom_F(V,W)$ where $V^*:=\Hom_F(V,F)$.
+\solution{
+Define $B: V^* \times W\rightarrow \Hom_F(V, W)$ by $B(\varphi,
+w)=g_{\varphi,w}$ where $g_{\varphi,w}$ is the function defined by
+$g_{\varphi, w}(v) = \varphi(v)w$.
+\begin{enumerate}
+\item $B$ is bilinear (this is pretty easy). So we get a homomorphism
+  $\Phi: V^*\otimes W \rightarrow \Hom_F(V, W)$. 
+\item $\Phi$ is onto: Let $L_{ij}: V\rightarrow W$ be the linear
+  transformation defined by $L_{ij}(e_k) = \begin{cases} f_i & j=k\\ 0
+    & j\neq k\end{cases}$. It can be easily verified that these are
+  linear transformations that form a
+  basis for $\Hom_F(V,W)$ (they are the matrices with a 1 in the $ij$
+  entry and zeroes everywhere else). We will show that
+  $L_{ij}=\Phi(\varphi\otimes w).$ Indeed, consider $\varphi_j:
+  V\rightarrow F$ defined by $\varphi_j(e_k) = \begin{cases} 1 & j=k
+    \\ 0 & j\neq k\end{cases}.$ When extended linearly, this is a
+  linear transformation. Consider $\Phi(\varphi_j \otimes f_i) =
+  g_{\varphi_j, f_i}$ which has the property that
+  $g_{\varphi_j,f_i}(e_k) = \varphi_j(e_k) f_i = \begin{cases} f_i &
+    j=k\\ 0 & j\neq k \end{cases}. $ Since $L_{ij}$ and $g$ agree on a
+  basis, they are the same transformation. Hence, $\Phi$ is onto. 
+\item We showed in class that $\dim F^n \otimes F^m = n\cdot m$ when
+  $F$ is a field, and $\dim \Hom_F(V,W)=nm$ since it is identified
+  with $\operatorname{Mat}_{m\times n} (F)$. Since $\Phi$ is an onto
+  linear map between two spaces of equal dimension, it is bijective,
+  so an isomorphism.
+\end{enumerate}}
+
+ \end{enumerate}
+\newpage
+
+Given an $R$ module $M$, we can think of $\Hom_R(M,-)$ as a
+    function. It takes an $R$-module $N$ as an input, and produces the
+    abelian group $\Hom_R(M,N)$.
+    \begin{align*}
+      \Hom_R(M,-): \operatorname{Mod}(R) & \rightarrow \mathcal{AB}\\
+\Hom_R(M,-)(N) & = \Hom_R(M,N).
+    \end{align*}
+More can be said. If $f: N\rightarrow N'$ is a homomorphism, then we
+can define $\Hom_R(M,f)$ to be a function which takes a homomorphism
+from $\Hom_R(M,N)$ and outputs a homomorphism in $\Hom_R(M,N')$ by
+composition:
+\begin{align*}
+  \Hom_R(M,f): \Hom_R(M,N) & \rightarrow \Hom_R(M,N')\\
+\Hom_R(M,f) (\varphi) &= f\circ \varphi
+\end{align*}
+A creature like $\Hom_R(M,-)$, which associates objects in a target
+category to objects in a source category in such a way that it also
+takes homomorphisms to homomorphisms is called a \emph{functor}. Think
+of these as function whose domains and codomains are categories. 
+\begin{enumerate}
+\item[5.] Describe the following abelian groups:
+  \begin{enumerate}
+  \item $\Hom_\bbZ (\bbZ/2\bbZ, \bbZ)$
+\solution{Suppose that $\phi: \bbZ/2\bbZ\rightarrow \bbZ$ is a
+  homomorphism. Then if $\phi([1])=a$,
+  $0=\phi([2])=\phi([1])+\phi([1]) = a+a$, so $2a=0$ in $\bbZ$. Thus,
+  $a=0$. Hence $\Hom_\bbZ(\bbZ/2\bbZ, \bbZ) = 0$}
+  \item $\Hom_\bbZ (\bbZ/4\bbZ, \bbZ/2\bbZ)$
+\solution{Since this function is defined by $f([1])$, we consider the
+  possible values of $f([1])$. If $f([1])=0$, then $f=0$ is the zero
+  function. Otherwise, $f([1])=[1]_2$. This is well-defined (since it
+  is really the quotient homomorphism by the submodule $2\bbZ/4\bbZ$),
+  and it has the property that $(f+f)([1])=[1]_2+[1]_2 = [2]_2 =
+  [0]_2$, so it has order 2. Hence, this group is isomorphic to
+  $\bbZ/2\bbZ$. }
+  \item $\Hom_\bbZ(\bbZ/2\bbZ, \bbZ/m\bbZ)$ for any integer $m$
+\solution{
+Similar to above, if $f([1])\neq 0$, $f([1])$ has order 2 in
+$\bbZ/m\bbZ$. Hence $m$ is divisible by 2, and $f(1)=m/2$. It's clear
+to show in this case that $f$ has order 2, so $\Hom_\bbZ(\bbZ/2\bbZ,
+\bbZ/m\bbZ) \cong \bbZ/2\bbZ$ if $m$ is even and 0 otherwise. 
+}
+  \item $\Hom_{\bbC[t]}(N, N)$ where $N$ is the $\bbC[t]$-module
+    which, as a vector space, is $\bbC^2$, and on which $T$ acts via
+    the matrix $T=\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix} $
+\solution{
+Suppose that $f: N\rightarrow N$ is a homomorphism of $R$ modules
+where $R=\bbC[t]$. This means that $f$ is an abelian group
+homomorphism, and that $f(r n) = rf(n)$ for all $r\in R$ and $n\in
+N$
+\begin{enumerate}
+\item That $f$ is an abelian group homomorphism menas that
+  $f(n+n')=f(n)+f(n')$ for all $n, n'\in N$. 
+\item Since the constant polynomials $\lambda$ are in $\bbC[t]$, we
+  also require that $f(\lambda n) = \lambda f(n)$ for all $n\in
+  N$. 
+\item These two together imply that $f$ is a linear
+  transformation. Since $N$ is 2 dimensional, let's say
+  $f= \begin{bmatrix} a & b \\ c & d \end{bmatrix}.$
+\item The polynomial $t\in \bbC[t]$, so we need to also verify that
+  $f(t n) = tf(n).$ But these are both linear transformations, so we
+  need to ensure that 
+  \[\begin{bmatrix} a & b \\ c & d \end{bmatrix}
+    \cdot \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}
+    =\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} a & b \\ c & d \end{bmatrix}\]
+This implies that $a=d$ and $c=0$, so $f=\begin{bmatrix} a & b \\ 0 &
+  a\end{bmatrix}$. 
+\item Finally, we need to ensure that $f( p(t) n) = p(t) f(n)$ for all
+  $n\in N$ and $p(t) \in \bbC[t]$. Let $p(t) = \sum\limits_{i=0}^m a_i
+  t^i$. Then $f\sum\limits_{i=0}^m a_i t^i n = \sum\limits_{i=0}^m a_i
+  ft^i n = \sum\limits_{i=0}^m a_i t^i f(n) = p(t) f(n)$ (since above
+  we showed that $f$ and $t$ commute.
+\item Hence, $\Hom_{\bbC[t]}(N, N) \cong \left\{ \begin{bmatrix} a & b
+      \\ 0 & a \end{bmatrix} \mid a,b\in \bbC\right\}$. 
+\end{enumerate}
+}
+
+  \end{enumerate}
+
+\item[6.] Prove that if $f: N\rightarrow N'$ is injective, then \[{\Hom_R(M,f):
+\Hom_R(M,N)\rightarrow \Hom_R(M,N')}\] is also injective. 
+\solution{
+First note that $\Hom_R(M,f)$ is a
+homomorphism of abelian groups (indeed, $\Hom_R(M,f)(\varphi+\varphi')
+= f\circ (\varphi + \varphi') = f\circ \varphi + f\circ \varphi'$
+since $f$ is a homomorphism of modules). Thus, it suffices to show
+that $\ker(\Hom_R(M,f))=0$. So assume that $\Hom_R(M,
+f)(\varphi)=0$. Then $f\circ \varphi(x) = 0$ for all $x\in M$. Then
+$f(\varphi(x))=0$ for all $x\in M$. But $f$ is injective, so $\ker
+f=0$, hence $\varphi(x)=0$ for all $x\in M$. This implies
+$\varphi=0$. 
+}
+\item[7.] On the other hand, it is not always the case that $\Hom_R(M,f)$
+  is surjective when $f$ is. Here, you'll work out an example. Let $f: \bbZ/4\bbZ \rightarrow \bbZ/2\bbZ$ be the quotient map
+    $f([x]_4)=[x]_2$ (you probably identified it in problem 4). $f$ is
+    clearly surjective. Show that the map $\Hom_\bbZ(\bbZ/2\bbZ,f):
+    \Hom_\bbZ(\bbZ/2\bbZ,\bbZ/4\bbZ) \rightarrow \Hom_\bbZ(\bbZ/2\bbZ,
+    \bbZ/2\bbZ)$ is not surjective.
+\solution{Suppose that $\varphi$ is the only non-trivial homomorphism
+  in $\Hom_\bbZ(\bbZ/2\bbZ, \bbZ/4\bbZ)$. I.e.,
+  $\varphi([x]_2)=[2x]_4$. Then $f\circ\varphi (x) = f([2x]_4) =
+  [2x]_2 = 0$. Hence, $\Hom_\bbZ(\bbZ/2\bbZ, f)$ is the zero map, even
+  though the domain and codomain are not trivial, so it is not
+  surjective. 
+}
+\end{enumerate}
+\end{document}
+2018/02/28 17:59:49

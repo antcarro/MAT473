@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{amsfonts,amssymb,amsmath,multirow}
+\usepackage{longtable}
+\usepackage[numbers,square]{natbib}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,nohead]{geometry}
+\usepackage{pdfsync}
+\usepackage{hyperref}
+\usepackage[table]{xcolor}
+\usepackage{fancyhdr}
+\lhead{MAT472: Graduate Group Theory}
+\chead{}
+\rhead{Autumn, 2016}
+\lfoot{}
+\cfoot{}
+\rfoot{\large\thepage}
+
+\makeatletter
+\renewcommand\subsection{%
+  \@startsection{subsubsection}{3}{\z@}%
+  {3.25ex\@plus 1ex \@minus .1ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+
+\begin{document}
+\pagestyle{fancy} 
+
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|l|}
+\hline
+   \begin{minipage}[t]{0.5\textwidth} {\bf Instructor:} Andrew
+     T. Carroll\\ {\bf Contact:}
+     \href{mailto:andrew.carroll@depaul.edu}{andrew.carroll@depaul.edu}\end{minipage}
+ & \begin{minipage}[t]{0.5\textwidth} {\bf
+        Office:} 512 SAC \\  {\bf Office Hours:} 3:00pm-5:00pm
+      Tuesday\\ Or by appointment
+  \end{minipage}\\ \hline
+{\bf Meetings:} Tuesday 6:00pm-9:15pm & {\bf Room No.}
+  Levan 203\\ \hline
+  \end{tabular}\\ 
+\end{table}
+
+\section*{Generalities} 
+
+\subsection*{Raison d'\^etre} This course is a graduate-level
+introduction to elementary group theory. Some of the topics to be
+discussed include various classes of groups (nilpotent, solvable, and
+simple groups), decompositions of groups (direct and semidirect
+products), the structure of finite abelian groups, actions of groups
+on sets, the class equation, and Sylow’s theorems.
+
+To succeed in this course, most students will need to commit at least 8 hours per week in addition to the class meetings to work on course material. Students who are unable to commit and sustain this level of attention are unlikely to fully succeed in the course. Some well-prepared students may be able to master the material in fewer hours per week, but other students may require more.
+
+
+\section*{Course Particulars}
+\label{sec:course-requirements}
+
+\subsection*{Prerequisites:} An undergraduate course in abstract algebra that included some group theory, or placement by the Director of the MS in Pure Mathematics program.
+
+\subsection*{Attendance:} Attendance is absolutely mandatory. We have
+10 class meetings total, so missing one class is missing 10\% of the
+course! Attendance will be taken at each meeting. If you miss a class
+without an approved excuse, you will drop one half-letter grade (about 5\%).
+
+\subsection*{Text:} We will use the text {\bf Abstract Algebra},
+3$^{rd}$ edition by D. Dummit and R. Foote. ISBN-13:
+978-0471433347. I'll be upfront about this: every solution to every
+problem in this book is online. Hence, I will write many of the
+homework problems. 
+
+
+\subsection*{Homework:} Each week, I will ask you to complete a
+selection of 7 to 12 problems, which will be posted on D2L. You
+\emph{must} submit these problems typed, preferably in \LaTeX. If you
+can't download \LaTeX to your machine for some reason, you can make a
+free account at \url{www.shareletex.com}. I will distribute some
+practice exercises to get you up to speed on writing with \LaTeX.
+
+I will grade typed homework by its clarity, logical consistency,
+and veracity (did it actually prove what you claim?). The rubric I use
+is as follows:\\
+
+\begin{tabular}[h]{|l|l|}
+  \rowcolor{cyan} Grade & Criteria \\ \hline 
+2& This is correct and well-written mathematics!\\\hline
+1 & \begin{minipage}[t]{0.75\textwidth} Writing is unclear and needs
+  to be cleaned up, or minor errors in the mathematical reasoning. Rewrite.
+  \end{minipage}\\\hline
+0 & \begin{minipage}[t]{0.75\textwidth} Significant mathematical
+  errors or writing that isn't comprehensible enough to grade. Rewrite.\end{minipage}\\
+\hline
+\end{tabular}
+
+Part of developing a mindset for mathematics is to take constructive
+criticism and use it to improve. To aid you in this development, I will accept corrections up
+to 1 week after the grade for a given assignment is posted. 
+
+Group work on homework is acceptable, but what is submitted must be
+your own writing! I will give you a 0 for the whole homework
+assignment if I see evidence of plagiarized work (this includes
+copying solutions from online or from a classmate). If you do work
+with a group, you must make a bibliographic citation for your
+partners. If you looked online for some help, you must cite this as
+well. If you found a solution in the book, again, citation. Give
+credit where it's due.
+
+\subsection*{Presentations:} You will be asked to present from a range
+of options each week. Each week, I'll post a collection of theorems and
+unsolved examples. You will be expected to sign up for, and present,
+on one of these each week. Some of these are difficult theorems, and
+so you won't be solving the problem, just preparing a proof from a
+book to present. Others may be homework problems that you do have to
+solve. Each choice has its challenges, but you should make sure that
+you're challenging yourself. Pick problems that are \emph{not} easy to
+present and push yourself to understand them. 
+
+Your grade for these presentations will be based on the following rubric:\\
+
+\begin{tabular}[h]{|l|l|}
+  \rowcolor{cyan} Grade & Criteria\\ \hline
+2 &\begin{minipage}{0.5\linewidth}Excellent, completely correct and
+  clear proof or solution.\\ \ \end{minipage}\\ \hline
+1 & \begin{minipage}{0.5\linewidth}\ \\Communication needs improvement, or there are minor mathematical
+    flaws.\\ \ \end{minipage}\\\hline
+0 & \begin{minipage}{0.5\linewidth}\ \\I am unconvinced that you understand what you are presenting; has
+    major mathematical flaws and logic is incoherently
+    presented.\\ \ \end{minipage}\\ \hline
+\end{tabular}
+
+
+\subsection*{Grade:} Your grade will be based on three categories:
+Homeworks, Presentations, an oral midterm exam. \\
+
+\begin{tabular}[h]{|l|l|}
+  \rowcolor{cyan} Category & Percentage of final grade\\\hline
+ Typed homework & 30\%\\ \hline
+Presentations & 25\%\\ \hline
+Midterm & 20 \%\\ \hline
+Final Exam & 25\%\\ \hline
+\end{tabular}
+
+\subsection*{Academic Integrity:} Work done for this course must adhere to the University Academic Integrity Policy, which you can review in the Student Handbook or at http://academicintegrity.depaul.edu. You are acting with academic integrity if you submit work that authentically reflects your personal understanding, however incomplete, of the material in question. Submitting work that does not authentically reflect your personal understanding, or enabling someone else to do so, is a serious violation of the Academic Integrity Policy. If I determine that you have violated the policy, I will report the incident to the Academic Integrity office, and may take additional action.
+
+\subsection*{Accommodations:} I am committed to making reasonable
+accommodations for students with disabilities or exceptional
+circumstances. To ensure that you receive the most appropriate accommodations based on your needs, please contact me as early as possible,
+preferably during the first week of classes. Depending on the
+accommodations sought, supporting documentation from the Center for
+Students with Disabilities may be required. All discussions will
+remain confidential.
+
+\subsection*{Schedule:} We will try to hew to the following schedule, though I
+  reserve the right to change this on the fly if I believe that
+  certain sections should be emphasized or de-emphasized. The
+  ``prerequisites'' section is for your own reading in case you are
+  uncomfortable with the topics therein contained. 
+
+\begin{tabular}[h]{|l|r|}
+  \hline
+\hline\multicolumn{2}{|c|}{\bf Prerequisites}\\
+\hline
+Properties of functions & \S 0.1\\
+\hline
+Properties of the integers & \S 0.2\\
+\hline 
+$\mathbb{Z}/n\mathbb{Z}$ & \S 0.3\\
+\hline
+\hline\multicolumn{2}{|c|}{\bf Week 1: Basics}
+	\\\hline\hline Basic definitions and examples & \S1.1, 2.1
+	\\\hline Dihedral groups, permutation groups &\S 1.2, 1.3, 3.5
+	\\\hline Matrix groups, the quaternion group & \S 1.4, 1.5
+	\\\hline Cyclic groups & \S 2.3
+\\\hline \hline\multicolumn{2}{|c|}{\bf Week 2: Homomorphisms and quotient groups}
+	\\\hline\hline Homomorphisms and isomorphisms & \S 1.6, 3.1
+	\\\hline Quotient groups & \S 3.1
+	\\\hline Cosets and Lagrange's Theorem & \S 3.2
+	\\\hline Isomorphism theorems & \S 3.3
+\\\hline\hline\multicolumn{2}{|c|}{\bf Week 3: An interlude on
+  categories}
+  \\\hline\hline Category theory & Appendix II
+  \\ \hline Products of subgroups, direct products & \S 3.2, 5.1, 5.4
+\\\hline \hline\multicolumn{2}{|c|}{\bf Weeks 4--6: Some general group theory}
+	\\\hline\hline Products of subgroups, direct products & \S 3.2, 5.1, 5.4
+	\\\hline Centralizers, normalizers, commutators & \S 2.2, 2.4
+	\\\hline Nilpotent, solvable, and simple groups & \S 3.4, 6.1
+	\\\hline Simplicity of $A_n$ ($n \geq 5$) & \S 3.5, 4.3, 4.6
+	\\\hline Automorphisms & \S 4.4
+	\\\hline Finite abelian groups & \S 5.2
+\\\hline \hline\multicolumn{2}{|c|}{\bf Weeks 7--10: Group actions and the Sylow theorems}
+	\\\hline\hline Group actions and permutation representations & \S 1.7, 4.1
+	\\\hline Cayley's theorem & \S 4.2
+	\\\hline The class equation & \S 4.3
+	\\\hline Finite $p$-groups & \S 6.1
+	\\\hline Semidirect products & \S 5.5
+	\\\hline Sylow's theorem and applications & \S 4.5\\
+\hline
+	\end{tabular}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+

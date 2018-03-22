@@ -1,0 +1,275 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,amssymb,dsfont,enumerate,color}
+\usepackage[top=1in, bottom=1in]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\tdplotsetmaincoords{70}{110}
+\usetikzlibrary{arrows.meta}
+\fancyhead[L]{MAT473}
+\fancyhead[R]{Homework 4}
+\fancyfoot[R]{\large \thepage}
+\fancyfoot[C]{}
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbk}{\mathbb{k}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\im}{\operatorname{im}}
+
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+\newcommand{\iitem}{\vfill \item}
+\newcommand{\topic}[1]{\textcolor{blue}{#1}}
+\newcommand{\answerbox}{\begin{flushright}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (5,-1.75);
+    \end{tikzpicture}\end{flushright}}
+\newcommand{\solution}[1]{\textcolor{red}{#1}}
+\newcommand{\points}[1]{\ [#1pts]}
+%\renewcommand{\solution}[1]{}
+
+\begin{document}
+\pagestyle{fancy}
+
+Throughout, unless otherwise stated, $R$ is a ring with identity and
+$M$ is a (left) $R$-module.
+
+\begin{enumerate}
+\item Suppose that $I$ is an ideal in $R$, and define by 
+  \[IM=\left\{\sum\limits_{finite} a_i m_i \mid a_i\in I,\ m_i\in
+      M\right\}.\] Prove that $IM$ is a submodule of $M$.
+\solution{
+Suppose that $A=\sum_{k\in K} a_k m_k$ and $B=\sum_J b_j m_j$ are elements of
+$IM$ where $a_k, b_j\in I$ and $K$ and $J$ are finite index sets. Then
+\begin{align*}
+  A+rB &= \sum_{k\in K} a_k m_k + r\sum_{j\in J} b_j m_j\\
+&= \sum_{l \in K\cup J} (a_l+rb_l)m_l
+\end{align*}
+which is in $IM$ since $al+rbl\in I$ and $K\cup J$ is finite. 
+} 
+\item Let $M$ and $M'$ be modules over $R$. Denote by 
+  \[\Hom_{R}(M,M')=\{f: M\rightarrow M' \mid
+    f(rm)=r\cdot f(m) \forall r\in R,\ m\in M\}.\] Prove that if
+  $R$ is a commutative ring, then $\Hom_R(M,M')$ is an $R$-module. 
+\solution{
+First, we have seen in group theory that $\Hom_R(M,M')$ is an abelian
+group, so we only need to demonstrate the action of $R$ on this
+set. Let $\varphi\in \Hom_R(M,M')$ and $r\in R$. Define $[r\varphi]:
+M\rightarrow M'$ by $[r\varphi](m) = r (\varphi(m))$. Then
+\begin{enumerate}
+\item $[r\varphi](m+n) =
+  r(\varphi(m+n))=r\varphi(m)+r\varphi(n)=[r\varphi](m)+[r\varphi](n)$
+\item $[r\varphi](sm) = r\varphi(sm)=rs\varphi(m)=sr\varphi(m)=s[r\varphi](m)$
+\end{enumerate}
+Hence, $[r\varphi]$ is a module homomorphism (you can check the other conditions). }
+\item Suppose that $R=\bbR[t]$, and consider the space
+  $M=\bbR^2$. Recall that we can make $M$ into an $R$-module by
+  providing a linear transformation $T$ on $M$. To this end, let $T$
+  be the transformation given by the matrix 
+  \[\begin{bmatrix} 2 & 6 \\ 0 & -1\end{bmatrix}.\] Find all
+  $R$-submodules of this module $M$. 
+\solution{
+Suppose that $N\subset M$ is a submodule. This means that $rn\in N$
+for all $n\in N$ and $r\in R$, and that $n+n'\in N$ whenever $n,n'\in
+N$. In particular, we consider the constant polynomials $c\in R$. This
+menas that $cn\in N$ for all $n\in N$. The rest of the module axioms
+show that $N$ must be a vector subspace of $M$. Since $M$ is
+two-dimensional over $\bbR$, its only subspaces are $0, M$ and
+$\operatorname{span}(v)$ where $v\in M$. 
+Next, we consider the polynomial $t$. We require that $tv\in
+\operatorname{span}(v)$, so $tv=\lambda v$ for some $\lambda \in
+\bbR$. This holds if and only if $v$ is an Eigenvector of $T$. The
+Eigenvectors of this matrix are $(1,0)$ and $(-2,1)$. Hence, the
+submodules are $\operatorname{span}((1,0))$ and
+$\operatorname{span}((-2,1))$. $t$ acts on the first via
+multiplication by 2, and $t$ acts on the second via multiplication by
+$-1$. 
+}
+\item Suppose that $M$ and $M'$ are $R$-modules and $f: M\rightarrow
+  M'$ is a module homomorphism.
+  \begin{enumerate}
+  \item Prove that $\ker f$ is a submodule of $M$.
+\solution{We know that the kernel of a group homomorphism, so $\ker f$
+  is an abelian group. Furthermore, if $r\in R$ and $x\in \ker f$,
+  then $f(rx) = rf(x) = r\cdot 0=0$. So $\ker f$ is a submodule of $M$.}
+  \item Prove that $\im f$ is a submodule of $M'$.
+\solution{Similarly, from group theory, the image of a homomorphism is
+  a subgroup of the codomain. So suppose that $x\in \im f$, so
+  $x=f(y)$ for some $y\in M$. Then $rx=rf(y)=f(ry)$, so $rx\in \im
+  f$. }
+  \item Prove that $M/\ker f\cong \im f$ (you'll have to construct the
+    isomorphism, of course, but you can assume that $M/N$ is a module
+    whenever $N$ is a submodule of $M$). 
+\solution{
+Consider the function $F: M/\ker f \rightarrow M'$ defined via
+$F(m+\ker f) = f(m)$. We already know that $F$ is a well-defined group
+isomorphism from the first isomorphism theorem from group theory. We
+need only show, then, that $F$ is also a module homomorphism. To this
+end, $F(r(m+ker f)) = F(rm+\ker f) = f(rm) = rf(m) = rF(m+\ker f)$, so
+indeed, $F$ is an $R$-module isomorphism.
+}
+  \end{enumerate}
+\item $M$ is said to be \emph{irreducible} if its only submodules are
+  $0$ and $M$ itself.
+  \begin{enumerate}
+  \item Prove that a non-trivial module $M$ is irreducible if and only
+    if $M$ can be generated by any of its non-zero
+    elements.\footnote{We say $x$ generates $M$ if $M=\{rx\mid r\in
+      R\}$.}
+\solution{Suppose that $M$ is irreducible and  $x\neq 0$ in $M$. Then
+  $Rx$ is a submodule. Since $x\neq 0$, then $x\in Rx$ so $Rx\neq
+  0$. Hence, $Rx=M$. On the other hand, suppose that $M$ can be
+  generated by any of its non-zero elements, and let $N\subset M$ be a
+  non-zero submodule. Then there is an element $x\in N$, so by
+  assumption, $M=Rx$. But $Rx\subset N$, so $N=M$. Hence, $M$ is irreducible.}
+  \item Prove that if $M, N$ are irreducible modules, and
+    $f:M\rightarrow N$ is a non-zero homomorphism, then $f$ is an
+    isomorphism.
+\solution{If $M$ and $N$ are irreducible and $f: M\rightarrow N$ is a
+  module homomorphism. Then $\ker f$ and $\im f$ are submodules of $M$
+  and $N$ as shown above. Since $f$ is non-zero, $\ker f \neq M$, so,
+  since $M$ is irreducible, $\ker f=0$ (i.e., $f$ is
+  injective). Similarly, $\im f\neq 0$, so $\im f = N$.}
+  \item Describe the irreducible modules over $\bbZ$ that have finite
+    cardinality. 
+\solution{
+Suppose that $M$ is an irreducible module over $\bbZ$ of finite
+cardinality. We have seen that $\bbZ$ modules are precisely the same
+as abelian groups, so $M$ is a finite abelian group. By the
+classification theorem of finite abelian groups, we have $M\cong
+\bigoplus\limits_{i=1}^u \bbZ/k_i\bbZ$ where $k_i \mid k_{i+1}$. In
+particular, if $M$ is irreducible, it can only have one direct
+summand, so $M\cong \bbZ/k \bbZ$ for some integer $k$. But if $n\mid
+k$, then $n\bbZ/k\bbZ$ is a non-trivial submodule, so $\bbZ/k\bbZ$ is
+simple if and only if $k=p$ is a prime. }
+  \end{enumerate}
+
+\item Consider the quiver discussed in class: $1\xrightarrow{a}
+  2$. Recall that $\bbR Q$ has a basis $\{x_{e_1}, x_a,
+  x_{e_2}\}$.
+  \begin{enumerate}
+  \item This ring has an identity element. Find it.
+\solution{
+$(x_{e_1}+x_{e_2})()(\gamma_1 x_{e_1}+\gamma_a x_a + \gamma_2 x_{e_2} )
+=(\gamma_1 x_{e_1}+\gamma_a x_a + \gamma_2 x_{e_2})$, so
+$x_{e_1}+x_{e_2}$ is the identity.  }
+  \item It turns out that $\bbR Q$ is isomorphic to $T_2(\bbR)$ (the
+    ring of upper-triangular matrices with entries in $\bbR$). Find
+    the isomorphism and prove your result. 
+\solution{
+Consider the function $F: \bbR Q \rightarrow T_2(\bbR)$ defined by 
+\[F(\gamma_1 x_{e_1}+\gamma_a x_a + \gamma_2 x_{e_2} )
+  = \begin{bmatrix} \gamma_2 & \gamma_a \\ 0 &
+    \gamma_1\end{bmatrix}.\]
+The linearity is easy to verify, so you should do it. Additionally,
+\begin{align*}
+  F((\gamma_1 x_{e_1}+\gamma_a x_a + \gamma_2 x_{e_2})(\alpha_1
+  x_{e_1}+\alpha_a x_a + \alpha_2 x_{e_2} )) &= F(\gamma_1 \alpha_1
+                                               X_{e_1} \\ & \ +
+                                                            (\gamma_a
+                                                            \alpha_1+\alpha_a
+                                                            \gamma_2)
+                                                            x_a \\ & \
+                                                                     +
+                                                                     \gamma_2
+                                                                     \alpha_2
+                                                                     X_{e_2}\\
+&= \begin{bmatrix} \gamma_2 \alpha_2 & \gamma_a \alpha_1 + \alpha_a
+  \gamma_2 \\ 0 & \gamma_1 \alpha_1 \end{bmatrix}\\ &= \begin{bmatrix}
+  \gamma_2 & \gamma_a \\ 0 & \gamma_1\end{bmatrix}
+                             \cdot \begin{bmatrix} \alpha_2 & \alpha_a
+                               \\ 0 & \alpha_1\end{bmatrix} .
+\end{align*}
+}
+  \end{enumerate}
+
+\item Consider the groups $G=\bbZ/4\bbZ$ (the cyclic group of order 4) and $H=\bbZ/2\bbZ \times
+  \bbZ/2\bbZ$ (the Klein 4-group).
+  \begin{enumerate}
+  \item Construct the group rings $\bbR G$ and $\bbR H$ for each. That
+    is, describe a basis for each and the multiplicative structure on
+    this basis.
+\solution{$RG$ has basis $\{x_0, x_1,x_2, x_3\}$ in which $x_0=1$,
+  $x_1^2=x_2$, and $x_1^3=x_3$, and $x_1^4=1$. So
+  $RG=\bbR[x]/(x^4-1)$. 
+$\bbR H$ has basis $\{x_{00}, x_{10}, x_{01}, x_{11}\}$. But notice
+that $x_{10}^2=x_{01}^2=1$, and $x_{11}=x_{10}x_{01}=x_{01}x_{10}$. If
+we rename $x=x_{10}$ and $y=y_{01}$, then this ring is really
+$\bbR[x,y]/(x^2-1, y^2-1)$. }
+  \item Prove that $\bbR G$ is not isomorphic to $\bbR H$. 
+\solution{
+Here's one way you can go about it: We've phrased each of the rings as
+quotients of polynomial rings by ideals. We could ask what the maximal
+ideals are, since those are relatively easy to understand in the
+context of polynomial rings. 
+One theorem we have is that there is a bijection between ideals in
+$R/I$ and ideals in $R$ containing $J$. So which ideals $J$ contain
+$(x^4-1)$. Well we note that $x^4-1=(x-1)(x+1)(x^2+1)$. If $J$ is an
+ideal containing $(x^4-1)$, then it must be generated by
+$(x-1)^n(x+1)^m(x^2+1)^l$ where each of $n,m,l$ could be either 0 or
+1, but no larger. This gives us a total of 8 ideals in $\bbR G$ (one
+of which is $\bbR G$ itself by taking $n=m=l=0$). 
+On the other hand, $(x^2-1)=(x+1)(x-1)$ and $y^2-1=(y+1)(y-1)$. Thus,
+the ideals that contain $(x^2-1,y^2-1)$ are the ideals $I$ of the form $(
+(x-1)^n(x+1)^m, (y-1)^l(y+1)^p)$ where each of $n$ and $m$ can be $0$
+or $1$, but note that if $n=m=0$ or $l=p=0$, then $I=\bbR H$, so we're
+counting that one twice. This yields a total of $2^4-1=15$
+ideals. Hence, $\bbR H$ and $\bbR G$ are non-isomorphic. }
+  \end{enumerate}
+
+
+
+\end{enumerate}
+\end{document}
+2018/02/07 22:10:30

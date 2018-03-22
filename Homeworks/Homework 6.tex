@@ -1,0 +1,263 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,amssymb,dsfont,enumerate,color}
+\usepackage[top=1in, bottom=1in]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\tdplotsetmaincoords{70}{110}
+\usetikzlibrary{arrows.meta}
+\fancyhead[L]{MAT473}
+\fancyhead[R]{Homework 6}
+\fancyfoot[L]{Name: \underline{\hspace{2in}}}
+\fancyfoot[R]{\large \thepage}
+\fancyfoot[C]{}
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbk}{\mathbb{k}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\im}{\operatorname{im}}
+
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+\newcommand{\iitem}{\vfill \item}
+\newcommand{\topic}[1]{\textcolor{blue}{#1}}
+\newcommand{\answerbox}{\begin{flushright}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (5,-1.75);
+    \end{tikzpicture}\end{flushright}}
+\newcommand{\solution}[1]{\textcolor{red}{#1}}
+\newcommand{\points}[1]{\ [#1pts]}
+%\renewcommand{\solution}[1]{}
+
+\begin{document}
+\pagestyle{fancy}
+
+
+\begin{enumerate}
+\item The following question gives a criterion for determining if $M$
+  is a direct sum. Let $M$ be an $R$-module and $L$ a
+  submodule of $M$. Let $\pi: M\rightarrow M/L$ be the projection
+  homomorphisms ($\pi: m\mapsto m+L$). Suppose that there exists a
+  homomorphism $p: M/L \rightarrow M$ such that $\pi \circ p=\operatorname{id}_{M/L}$ (such a function is called a
+  \emph{section} of $\pi$). Prove that $M \cong L\oplus
+  \operatorname{image}(p)$, and conclude that $M\cong L\oplus M/L$. 
+\solution{
+Suppose that $\pi \circ p = \operatorname{id}_{M/L}$. Note that
+$\im(p)$ and $L$ are both submodules of $M$. To prove that $M\cong
+\im(p)\oplus L$, we need only show that (i) $\im(p)\cap L =\{0\}$ and
+(ii) $\im+L = M$.
+\begin{itemize}
+\item[i.] Suppose that $l\in L$ and $l\in \im(p)$. Hence, there exists
+  an element $n+L\in M/L$ with $p(n+L) = l$.
+  \begin{align*}
+    \pi(l) &= \pi(p(n+L))\\
+0 & = \operatorname{id}_{M/L}(n+L)\\
+0 &= n+L
+  \end{align*}
+[here, the first line is simply expressing $l$ as $p(n+L)$, the second
+is recognizing that $\pi(L)=0$ and that $\pi\circ p$ is the identity.]
+Hence, $n\in L$, and so $p(n+L)=0$. Therefore, $l=0$. 
+\item[ii.] Let $m\in M$. Denote by $m'$ the composition $p\circ \pi$
+  applied to $m$. I.e., $m'=p(\pi(m))$. Note that
+  \begin{align*}
+    \pi(m') &= \pi (p(\pi(m)))\\
+\pi(m') &= \operatorname{id}_{M/L} \pi(m)\\
+\pi(m')&= \pi(m).
+m' + L &= m+L
+  \end{align*}
+In particular, $m-m'\in L$. Therefore, $m=m'+l$ for some $l\in
+L$. Thus, $L+\im(p)=M$. 
+\end{itemize}
+By these two statement, $M\cong \im(p)\oplus L$. Finally, since $\pi \circ p$
+is injective (it's equal to the identity), we must have $p$ is
+injective, so $\im(p)$ is isomorphic to $M/L$. Thus, $M\cong M/L
+\oplus L$.}
+
+\item Recall that if $M$ and $N$ are $R$-modules, then \[\Hom_R(M,N) =
+  \{\varphi: M\rightarrow N \mid \varphi \textrm{ is a homomorphisms
+    of $R$-modules}\}.\] Prove the following:
+\begin{itemize}
+\item If $R$ is commutative, $\Hom_R(R, M) \cong M$ (in particular, you have to show that
+  $\Hom_R(R,M)$ is an $R$ module in this case). 
+\solution{
+Let $G: \Hom_R(R,M)\rightarrow M$ be the function with $G(\varphi) =
+\varphi(1)$.
+\begin{enumerate}
+\item $G(\varphi+r\varphi') = \varphi(1)+r\varphi'(1) =
+  G(\varphi)+rG(\varphi')$, so $G$ is indeed a homomorphism.
+\item We showed in a previous homework that $\Hom_R(R,M)$ is an
+  $R$-module (when $R$ is commutative). 
+\item Now assume that $G(\varphi)=0$. Then $\varphi(1)=0$, so
+  $\varphi(r) = r\varphi(1) = 0$ for all $r\in R$, so $\varphi=0$.
+\item Finally, let $m\in M$. Define the function $\varphi_m(r) =
+  rm$. We've shown previously that this function is a homomorphism,
+  and clearly $G(\varphi_m) = m$, so $G$ is onto. 
+\item Thus, $G$ is an isomorphism. 
+\end{enumerate}
+}
+\item $\Hom_R(N\oplus L, M) \cong \Hom_R(N,M)\oplus \Hom_R(L,M)$
+\solution{
+  Define $\Psi: \Hom_R(N,M) \oplus \Hom_R(L,M) \rightarrow
+  \Hom_R(N\oplus L, M)$ via $\Psi(f,g) (n,l) = f(n)+g(l)$. We
+  claim this is an isomorphism (of abelian groups, since these aren't
+  necessarily modules).
+  \begin{enumerate}
+  \item $\Psi( (f,g)+(f',g'))(n,l)= \Psi((f+f',g+g'))(n,l)$ and
+    $(f+f')(n)+(g+g')(l) = f(n)+g(l) + f'(n)+g'(l) =
+    \Psi(f,g)+\Psi(f',g')$.
+  \item $\ker\Psi=\{(f,g) \mid f(n)+g(l) = 0 \forall n\in N, l\in L\},$
+    but since $l=0\in L$, $f(n)+0=0$ for all $n\in N$, so $f=0$, and
+    similarly, since $n=0\in N$, $0+g(l)=0$ for all $l\in L$, so $f=0$
+    and $g=0$. 
+  \item If $H: N\oplus L \rightarrow M$, then we have maps $H_N:
+    N\rightarrow M$ and $H_L: L\rightarrow M$ constituted by composing
+    the inclusion homomorphisms with $H$. Then $\Psi((H_N, H_L))(n,l)
+    = H(n,l).$
+  \end{enumerate}
+}
+\item If $F$ is free and $R$ is commutative, then $\Hom_R(F,R)\cong
+  F$. [Note, in the non-commutative case, this is not true! Ask about
+  it in class.]
+\solution{Let $F$ be free with basis $A=\{f_i \mid i\in I\}$. A cute
+  approach is to use the universal property of the free modules (D\&F p354): For
+  any element $x$ in $F$, write $x=\sum x_i f_i$ which is, by
+  definition, a finite sum. This gives rise to a set function
+  $\varphi: A\rightarrow F$ defined by $\varphi(f_i) = x_i$. By
+  the universal property, there is a homomorphism $\Phi: F\rightarrow
+  R$ with the property that $\Phi(\sum b_i f_i) = \sum b_i
+  \varphi(f_i) = \sum b_i x_i$. So this is the function we'll
+  use: For any $x\in F$, let $\Phi(x): F\rightarrow R$ be the function
+  defined by $\Phi(x)(\sum_i b_i f_i) = \sum_i b_i x_i$ where $x=\sum
+  x_i f_i$.
+  \begin{enumerate}
+  \item This function is one-to-one: Assume $\Phi(x)=\Phi(y)$. Then
+    $\Phi(x)(f_i) = x_i \cdot 1$ and $\Phi(y)(f_i) = y_i\cdot 1$. By
+    assumption, then $x_i = y_i$ for all $i$, so $x=y$. 
+  \item To prove that the function is onto, suppose that $\phi: F
+    \rightarrow R$. Let $x_i = \phi(f_i)$ for each $i$, and $x=\sum_i
+    x_i f_i$. Since $F$ is of finite rank, the index set is
+    finite. Then $\Phi(x)(y) = \sum_i x_i y_i = \sum_i y_i \phi(f_i) =
+    \sum_i \phi(y_i f_i)= \phi(\sum_i y_i f_i) = \phi(y)$. Hence,
+    $\Phi(x)=\phi$. 
+  \end{enumerate}
+}
+\end{itemize}
+\item Suppose that $M$ and
+  $N$ are $R$-modules which are free of finite rank, and let $\varphi:
+  M\rightarrow N$ be an $R$-module homomorphism. Let
+  $\{m_1,\dotsc, m_s\}$ be a basis for $M$ and $\{n_1,\dotsc, n_t\}$ a
+  basis for $N$. Prove that $\phi$ can be encoded as multiplication by
+  a $t\times s$ matrix with entries in $R$. \footnote{This is
+    intentionally vague. Think about it for a bit, try to think about
+    linear algebra, and ask me if you have questions after mulling it
+    over. }
+\solution{
+Let $A\in \operatorname{Mat}_{t,s}(R)$ be the table of elements defined in the following way: for
+each $j=1,\dotsc, s$, express $\varphi(m_j)$ as a linear combination
+of the basis element of $N$, i.e., $\varphi(m_j) = \sum_i \alpha_{ij}
+n_i$. If $x=\sum_j x_j m_j$, then
+\begin{align*}
+  \varphi(x) &= \varphi(\sum_j x_j m_j)\\
+ &= \sum_j x_j \varphi(m_j)\\
+&= \sum_j x_j \sum_i \alpha_{ij} n_i\\
+&= \sum_i \left( \sum_j \alpha_{ij} x_j \right) n_i\\
+&= \sum_i \left( A \cdot \begin{bmatrix} x_1\\ x_2 \\ \vdots \\
+    x_s\end{bmatrix} \right)_i n_i
+\end{align*}
+So the column vector of $\varphi(x)$ is given by $A[x]$ where $[x]$ is
+the column vector of $x$ in the basis $\{m_1,\dotsc, m_s\}$. 
+}
+\item Dummit \& Foote \S 10.3 \#12 \solution{As everyone pointed out,
+    this was a previous exercise. }
+
+\item Dummit \& Foote \S 10.3 \#27 (This one is really wild: we showed
+  in linear algebra that the dimension of a vector space is unique. In
+  particular, any two bases have the same cardinality. It would
+  certainly be weird if we could find a 2D vector space that was
+  isomorphic to a 3D vector space. But that exact thing can happen
+  with non-commutative rings.)
+\solution{Let $\varphi_i$ and $\psi_i$ be as defined in Dummit \&
+  Foote. Note that
+  \begin{align*}
+    \psi_1 \phi_i(a_1,a_2,\dotsc) + \psi_2\phi_2(a_1,a_2,\dotsc ) &=
+                                                                    (a_1,
+                                                                    0,
+                                                                    a_3,
+                                                                    0,
+                                                                    \dotsc
+                                                                    )
+                                                                    +
+                                                                    (0,
+                                                                    a_2,
+                                                                    0,
+                                                                    a_4,
+                                                                    \dotsc
+                                                                    )\\
+ &= (a_1, a_2, a_3, \dotsc) \\
+&= \operatorname{id}(a_1,\dotsc)        
+  \end{align*}
+so $\psi_1 \phi_1 + \psi_2 \phi_2 = id$. In particular, if
+$g\in M$, then $g=(g\psi_1)\phi_1 + (g\psi_2)\phi_2$. Hence,
+$\{\phi_1, \phi_2\}$ span $M$. Furthemore, suppose that $g_1 \phi_1 +
+g_2 \phi_2=0$. Then 
+\begin{align*}
+(g_1 \phi_1+g_2\phi_2)(\psi_i) &=0\\
+ g_1 \phi_1 \psi_i + g_2 \phi_2
+                                 \psi_i &= 0\\
+ g_i & = 0.
+\end{align*}
+where we used the relation that $\phi_i \psi_i=1$ and
+$\phi_i\psi_{\neq i} = 0$. }
+\end{enumerate}
+\end{document}
+2018/02/21 19:12:34

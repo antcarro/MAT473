@@ -1,0 +1,25 @@
+\contentsline {section}{\numberline {7}Basics}{1}
+\contentsline {subsection}{\numberline {7.1}Introduction to rings}{1}
+\contentsline {subsection}{\numberline {7.3}Ring homomorphisms}{4}
+\contentsline {subsection}{\numberline {7.4}Properties of ideals}{7}
+\contentsline {subsection}{\numberline {7.5}Rings of fractions: localization}{9}
+\contentsline {subsection}{\numberline {7.6}Interlude: Categories}{11}
+\contentsline {subsection}{\numberline {7.7}Chinese remainder theorem}{12}
+\contentsline {section}{\numberline {8}Special Classes of Domains}{13}
+\contentsline {subsection}{\numberline {8.1}Euclidean domains}{14}
+\contentsline {subsection}{\numberline {8.2}Principle ideal domain}{16}
+\contentsline {subsection}{\numberline {8.3}Unique factorization domains}{16}
+\contentsline {subsection}{\numberline {8.4}Gaussian integers}{18}
+\contentsline {subsection}{\numberline {8.5}Non-commutative rings}{19}
+\contentsline {subsubsection}{\numberline {8.5.1}Group rings}{19}
+\contentsline {subsubsection}{\numberline {8.5.2}Matrix rings}{19}
+\contentsline {subsubsection}{\numberline {8.5.3}Path algebras}{19}
+\contentsline {subsection}{\numberline {8.6}Polynomial rings I}{20}
+\contentsline {section}{\numberline {9}Modules}{20}
+\contentsline {subsection}{\numberline {9.1}Basic definitions}{21}
+\contentsline {subsection}{\numberline {9.2}Module homomorphisms}{23}
+\contentsline {subsection}{\numberline {9.3}Generation of modules, direct sums, and free modules}{24}
+\contentsline {subsection}{\numberline {9.4}Tensor products of modules}{27}
+\contentsline {subsection}{\numberline {9.5}Exact sequences and special modules}{31}
+\contentsline {section}{\numberline {10}Algebraic geometry}{34}
+\contentsline {section}{\numberline {11}Multilinear algebra}{36}

@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,amssymb,dsfont,enumerate,color}
+\usepackage[top=1in, bottom=1in]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\tdplotsetmaincoords{70}{110}
+\usetikzlibrary{arrows.meta}
+\fancyhead[L]{MAT473}
+\fancyhead[R]{Midterm Exam}
+\fancyfoot[L]{Name: \underline{\hspace{2in}}}
+\fancyfoot[R]{\large \thepage}
+\fancyfoot[C]{}
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbk}{\mathbb{k}}
+
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+\newcommand{\iitem}{\vfill \item}
+\newcommand{\topic}[1]{\textcolor{blue}{#1}}
+\newcommand{\answerbox}{\begin{flushright}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (5,-1.75);
+    \end{tikzpicture}\end{flushright}}
+\newcommand{\solution}[1]{\textcolor{red}{#1}}
+\newcommand{\points}[1]{\ [#1pts]}
+%\renewcommand{\solution}[1]{}
+
+\begin{document}
+\pagestyle{fancy}
+
+Throughout, $R$ is a ring with $1\neq 0$. When a question says
+``describe'' or ``find'' or something like that, I'm still asking you
+for a proof!
+\begin{enumerate}
+\item Prove the following equivalences for commutative rings $R$:
+  \begin{enumerate}
+  \item An ideal $I$ is prime if and only if $R/P$ is an integral
+    domain.
+  \item An ideal $I$ is maximal if and only if $R/P$ is a field.
+  \end{enumerate}
+\item Suppose that $I_1,I_2,\dotsc,I_n$ are two-sided ideals in a ring
+  $R$. 
+  \begin{enumerate}
+  \item Prove that $\bigcap_{j=1}^n I_j$ is a two-sided ideal.
+  \item Prove that $\prod\limits_{j=1}^n I_j$ is a two-sided
+    ideal.\footnote{$I_1I_2:=\{\sum\limits_{k=1}^L r_k^{(1)}r_k^{(2)}
+      \mid r_k^{(1)}\in I_1, r_k^{(2)}\in I_2$ is the product of
+      ideals, and the n-fold product is defined recursively.}
+  \item Determine the containment dependence between (a) and (b) (that
+    is, which one must be contained in the other). 
+  \end{enumerate}
+\item Suppose that $\varphi: R\rightarrow S$ is a homomorphism of
+  rings (assume for this problem that $\varphi(1_R)=1_S$. 
+\begin{enumerate}
+\item Prove that if $P$ is a prime ideal in $S$, then
+  $\varphi^{-1}(P)$, its preimage in $R$, is a prime ideal in $R$. 
+\item Suppose that $M$ is a maximal ideal in $S$ and that $\varphi$ is
+  surjective. Prove that $\phi^{-1}(M)$ is a maximal ideal in $R$. 
+\item Give an example of a homomorphism of rings $\varphi:
+  R\rightarrow S$ and a maximal ideal $M\subset S$ such that
+  $\varphi^{-1}(M)$ is \emph{not} a maximal ideal in $R$. 
+\end{enumerate}
+\item Suppose that $R$ is an integral domain and that $D\subset R$ is
+  a non-empty multiplicative set not containing $0$. Prove that
+  $D^{-1}R$ is also an integral domain. (Be very careful about what it
+  means to equal $0$ in $D^{-1}R$.)
+\item Consider the set $\bbR[[t]]=\{\sum\limits_{i\geq 0} a_i t^i\mid
+  a_i \in \bbR\}$, known as the ring of formal power series in the
+  variable $t$, with addition and multiplication as in the case of the
+  polynomial ring. \footnote{\[\left(\sum\limits_{i\geq 0} a_i
+      t^i\right) \cdot \left(\sum\limits_{i\geq 0} b_i t^i \right) =
+    \sum\limits_{i\geq 0} c_i t^i\] and $c_i = \sum\limits_{j=0}^i a_jb_{i-j}$.}
+  \begin{enumerate}
+  \item Describe all the units in $\bbR[[t]]$. 
+  \item Prove that $\bbR[[t]]$ is a local ring by finding its unique
+    maximal ideal.
+  \end{enumerate}
+
+\end{enumerate}
+\end{document}
+2018/01/31 17:39:56

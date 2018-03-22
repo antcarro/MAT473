@@ -1,0 +1,177 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,amssymb,dsfont,enumerate,color}
+\usepackage[top=1in, bottom=0.6in]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\tdplotsetmaincoords{70}{110}
+\usetikzlibrary{arrows.meta}
+\fancyhead[L]{MAT473: Final Exam}
+\fancyhead[R]{ }
+\fancyfoot[L]{}
+\fancyfoot[R]{\large \thepage}
+\fancyfoot[C]{}
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbk}{\mathbb{k}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Hom}{\operatorname{Hom}}
+
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+\newcommand{\iitem}{\vfill \item}
+\newcommand{\topic}[1]{\textcolor{blue}{#1}}
+\newcommand{\answerbox}{\begin{flushright}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (5,-1.75);
+    \end{tikzpicture}\end{flushright}}
+\newcommand{\solution}[1]{\textcolor{red}{#1}}
+\newcommand{\points}[1]{\ [#1pts]}
+%\renewcommand{\solution}[1]{}
+
+\begin{document}
+\pagestyle{fancy}
+
+You must complete problems 1-5. Each is worth 10 points. For a
+possible 5 point bonus, you can complete an extra problem. Make sure
+you indicate which one is to be your bonus. 
+\begin{enumerate}
+\item Define the following terms:
+  \begin{enumerate}
+  \item A \emph{two-sided ideal} $I$ in a ring $R$
+  \item A \emph{prime element} $p$ in a commutative ring $R$
+  \item An \emph{irreducible element} $q$ in a commutative ring $R$ 
+  \item A \emph{principal ideal} $I$ in a commutative ring $R$
+  \end{enumerate}
+\item Complete {\bf one} of the following: 
+\begin{enumerate} 
+\item Suppose that $R$ is a Euclidean domain with norm $N: R\rightarrow
+\bbZ_{\geq 0}$. Let $I$ be an ideal in $R$, and let $d\in I\setminus \{0\}$ be
+  an element of minimal norm (i.e., $N(x)\geq N(d)$ for all $x\in
+  I$). Prove that $I=(d)$. 
+\item Let $F$ be a field, and consider the ring $R=F[t]$. 
+  \begin{enumerate}
+  \item Describe the one-dimensional $R$-modules (that is, the modules
+    which are one-dimensional when considered as vector spaces over
+    $F$).
+  \item Let $V=F^n$ be the $n$-dimensional $F$-vector space with basis
+    $\{e_1,\dotsc, e_n\}$, and define $T:V\rightarrow V$ to be the
+    linear transformation such that $T(e_i) =
+  e_{i-1}$ for $2\leq i \leq n$ and $T(e_1)=0$. Prove that
+  $U_k:=\operatorname{span}(e_1,\dotsc, e_k)$ is an $F[t]$-submodule
+  of $V$ for each $k=1,\dotsc, n$. 
+% \item Let $F=\bbR$, and consider the $F[t]$-module given by the following
+%   information: $V=\bbR^2$ and $T=\begin{bmatrix} 0 & -1 \\ 1 &
+%     0 \end{bmatrix}$. Prove that $V$ is an irreducible $F[t]$ module. 
+\end{enumerate}
+\end{enumerate}
+\item Prove {\bf one} of the following. 
+\begin{enumerate}
+\item Let $M$ be an $R$ module and $N\subset M$ be a submodule. Prove
+  that if $N$ and $M/N$ are finitely-generated over $R$, then $M$ is
+  also finitely generated. 
+\item Suppose that $0 \rightarrow N \xrightarrow{i} M \xrightarrow{\pi} L
+  \rightarrow 0$ is a short exact sequence of $R$ modules and that
+  there exists a homomorphism $p: L\rightarrow M$ such that $\pi \circ
+  p = \operatorname{id}_L$. Prove that $M\cong N\oplus L$. 
+\end{enumerate}
+\item Fun with isomorphism theorems. Prove {\bf one} of the following: 
+\begin{enumerate}
+\item Let $R$ be a commutative ring and $J$ an ideal in $R$. Prove that there is a bijection between ideals
+  $I$ in $R$ containing $J$ and ideals in $R/J$, call it $\Psi$. Then
+  show that $\Psi(I)$ is a prime ideal in $R/J$ if and only if
+  $I$ is a prime ideal in $R$ (which contains $J$). 
+\item Prove the first isomorphism theorem for modules: If $M$ and $N$
+  are $R$-modules and $\varphi: M\rightarrow N$ is an $R$-module
+  homomorphism, then $M/\ker \varphi \cong
+  \operatorname{image}(\varphi)$. 
+\end{enumerate}
+\item Complete {\bf one} of the following problems: 
+\begin{enumerate}
+\item Show that if $R$ is a ring and $M$ is an $R$-module, then
+  $R\otimes_R M\cong M$. Construct this homomorphism via the universal
+  property. 
+\item Let $S\subset R$ be a multiplicatively closed subset of a
+  commutative ring $R$, and $S^{-1}R$ be the ring of fractions of $S$
+  in $R$.
+  \begin{enumerate}
+  \item Prove that the function $\Psi: \{\textrm{ideals } I \subset R
+    \mid I \cap S = \emptyset\}\rightarrow \{\textrm{ideals } S^{-1}I
+    \subset S^{-1}R\}$ defined by \[\Psi(I) = \{(x,s) \mid x\in I,
+      s\in S\}\] has the property that $\Psi(P)$ is prime whenever $P$
+    is. 
+  \item Let $S=\{2^k \mid k\in \bbZ_{\geq 0}\}$ and $R=\bbZ$. List the
+    prime ideals in $S^{-1}\bbZ$. 
+  \end{enumerate}
+\item Let $R$ be a commutative ring and $M$ an $R$ module. Prove that
+  \[\Hom_R(R^n,M)\cong \underbrace{M\oplus M \oplus \dotsc \oplus
+    M}_n.\] Note: you must define the isomorphism and prove your
+result.
+\end{enumerate}
+
+
+% \item Let $I\subset R$ be an ideal in a commutative ring. Prove the
+%   following:
+%   \begin{enumerate}
+%   \item $R/I$ is an integral domain if and only if $I$ is a prime
+%     ideal.
+%   \item $R/I$ is a field if and only if $I$ is maximal. 
+%   \end{enumerate}
+
+
+
+
+
+\end{enumerate}
+\end{document}
+2018/03/12 15:52:43

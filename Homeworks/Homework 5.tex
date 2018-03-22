@@ -1,0 +1,199 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,amssymb,dsfont,enumerate,color}
+\usepackage[top=1in, bottom=1in]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\tdplotsetmaincoords{70}{110}
+\usetikzlibrary{arrows.meta}
+\fancyhead[L]{MAT473}
+\fancyhead[R]{Homework 5}
+\fancyfoot[L]{Name: \underline{\hspace{2in}}}
+\fancyfoot[R]{\large \thepage}
+\fancyfoot[C]{}
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbk}{\mathbb{k}}
+
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+\newcommand{\iitem}{\vfill \item}
+\newcommand{\topic}[1]{\textcolor{blue}{#1}}
+\newcommand{\answerbox}{\begin{flushright}
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (5,-1.75);
+    \end{tikzpicture}\end{flushright}}
+\newcommand{\solution}[1]{\textcolor{red}{#1}}
+\newcommand{\points}[1]{\ [#1pts]}
+%\renewcommand{\solution}[1]{}
+
+\begin{document}
+\pagestyle{fancy}
+
+
+\begin{enumerate}
+\item Dummit \& Foote, problem 10.3 \#2
+\solution{
+Suppose that $R^m \cong R^n$. Let $I$ be a maximal ideal of $R$. Then
+$F^m=R^m/I^m \cong R^n/I^n =F^n$ where $F=R/I$ is a field. For finite
+dimensional vector spaces, the dimension is unique, so $m=n$. On the
+other hand, suppose that $m=n$. Then $R^m=R^n$, so the isomorphism is
+the identity. } 
+\item Let $R=\operatorname{Mat}_{n\times n}(\bbC)$, and $M=\bbC^n$
+  be the $R$ module with $A\cdot \vec{v} = A\vec{v}$ (given by left
+  matrix multiplication). Prove that $M$ is a cyclic $R$-module.
+\solution{
+Consider the vector $e_1 \in M$, the first standard basis vector. Then
+$Ae_1$ is the first column of $A$. Hence, for all $v\in M$, $v=[v * * *]e_1$ where $[v *
+* * ]$ is the matrix with $v$ as first column and anything else in the
+other columns. Thus, $Re_1 = M$. }
+\item Dummit \& Foote, problem 10.2 \#4
+\solution{
+Let $A$ be a $\bbZ$ module.
+\begin{enumerate}
+\item Suppose that $a\in A$. Then the map $\varphi_a:
+  \bbZ/n\bbZ\rightarrow A$ defined by $\varphi_a([k]_n) = ka$ is
+  well-defined if and only if $na=0$. Indeed, if $\varphi_a([k]_n)=ka$
+  is well-defined, then $na=\varphi_a([n]_n)=\varphi_a([0]_n)=0\cdot
+  a=0.$ On the other hand, suppose that $na=0$. if $k-k'=cn$ for some
+  integers $k,k',c$, then $ak-ak'=acn = 0$, so $ak=ak'$, i.e.,
+  $\varphi([k]_n)=\varphi([k']_n)$. 
+\item Now consider $M=\operatorname{Hom}_\bbZ(\bbZ/n\bbZ, A)$. If $\varphi\in M$,
+  then let $a=\varphi([1])$. Then $\varphi([k]) = ak =
+  \varphi_a([k])$. Hence, $\varphi=\varphi_a$, so all elements of $M$
+  are of the form $\varphi_a$ for some $a\in A$. Now define the
+  function $G: M\rightarrow A_n$ vial $G(\varphi_a) =
+  \varphi_a(1)=a$. By the above description, $G$ is onto. Furthermore,
+  if $G(\varphi_a)=G(\varphi_b)$, then $a=b$, so $G$ is
+  one-to-one. Furthemore, $G(\varphi+\phi)=(\varphi+\phi)(1) =
+  \varphi(1)+\phi(1) = G(\varphi)+G(\phi)$, so $G$ is a homomorphism,
+  and by the other work above, it is an isomorphism.
+\end{enumerate}
+}
+\item Consider the ring $R=\bbC[t]/(t^2)$. Classify all
+  \emph{irreducible} $R$-modules and all \emph{indecomposable}
+  $R$-modules and prove your result.
+\solution{
+Recall that an $R$-module $M$ is a $\bbC$ vector space with the action of
+a linear map $t: M\rightarrow M $ and we need to insist that $t^2=0$ since this is the case in
+$R$. By Jordan Canonical Form, this means that there is a basis for
+$M$ for which $t$ take the matrix form consisting of $1x1$ and $2x2$
+Jordan blocks. But if $\dim M>1$, we know by Cayley's Theorem that $t$
+has at least one Eigenvector, and since $t$ is nilpotent, the
+Eigenvalue of this is 0. Hence, $\operatorname{span}(v)$ is a
+submodule since $t.v=0v\in \operatorname{span}(v)$. Hence, if $M$ is
+irreducible, $\dim M = 1$ or $\dim M=0$. If $\dim M=1$, then $t$ is a
+nilpotent linear operator, so $t.v=0$ for all $v$. Thus, the only
+non-zero irreducibles are $(\bbC, [0])$. 
+By the above discussion, for any $R$-module $M$ with $\dim M=d$ we
+can find a basis for $M$ such that the matrix of the action of $t$ is
+given by
+\begin{tabular}[h]{|c|c|c|c|}
+\hline
+$J_{n_1}(0)$ & 0 & $\dotsc$ & 0 \\ \hline 0 & $J_{n_2}(0)$ & $\dotsc$
+                            & 0 \\ \hline $\vdots$ & $\vdots$ &
+                                                                $\ddots$
+                            & $\vdots$\\\hline 0 & 0 & $\dotsc$ &
+                                                            $J_{n_k}(0)$\\
+  \hline \end{tabular} where $J_{n_i}(0)$ are Jordan blocks of
+Eigenvalue 0 of size at most 2. We showed in linear algebra that this
+indicates $M\cong \bigoplus\limits_{i=1}^k (\bbC^{n_i}, J_{n_i}(0))$
+is the direct sum decomposition of $M$. Therefore, the only
+indecomposable modules are those of the form $(\bbC^2, J_2(0))$ and
+$(\bbC, J_1(0))$. 
+} 
+\item Dummit \& Foote, problem 10.3 \#7
+\solution{Suppose that $N$ and $M/N$ are finitely generated, with $N$
+  generated by $\{n_1,\dotsc, n_l\}$ and $M/N$ generated by
+  $\{m_1+N,\dotsc, m_k+N\}$. Then I claim that $\{n_1,\dotsc, n_l,
+  m_1,\dotsc, m_k\}$ generate $M$. Indeed, let $x\in M$. Then
+  \begin{align*}
+    x+N &= \sum_i r_i (m_i+N)\\
+&= \sum_i r_i m_i + N
+  \end{align*}
+since the cosets of $m_i$ generate $M/N$. Thus, $x-\sum_i r_i m_i \in
+N$. But $N$ is generated by the $n_j$, so $x-\sum_i r_i m_i = \sum_j
+s_j n_j$, and thus $x=\sum_i r_i m_i + \sum_j s_j n_j$. This shows
+that the original set generates $M$. }
+\item Recall that if $Q$ is the quiver $1\xrightarrow{a} 2$, then $FQ$
+  is the $F$-vector space with basis $\{x_{e_1},x_{e_2},x_a\}$ and
+  multiplication defined by concatenation of paths. We showed in class
+  that a module is defined by three pieces of data: vector spaces
+  $V_1$ and $V_2$, and a linear map $V_a: V_1\rightarrow
+  V_2$. Classify the \emph{irreducible} $FQ$ modules. 
+\solution{
+Suppose that $\mathbb{V}=(V_1, V_2, V_a)$ is a module. A submodule is a
+collection of subspaces $(W_1, W_2)$ with $W_i \subset V_i$ such that
+$V_a(W_1) \subset W_2$. Notice that $\ker V_a\subset V_1$, and
+$V_a(\ker V_a)=V_a(0)=0$, so $(\ker V_a, 0)$ is a submodule of
+$\mathbb{V}$. Thus, if $V_1\neq 0$, $V_2=0$. Further, $(\bbC^n, 0, 0)$
+has $(\operatorname{span}(e_1),0,0)$ as a submodule, so it is
+irreducible if and only if $n=1$. \bf{Solution 1: $(\bbC^1, 0, 0)$ is
+  irreducible.} Secondly, suppose that $V_2\neq 0$. Then for any
+subspace $W_2 \subset V_2$, we have $(0, W_2, 0)$ a submodule (since
+$V_a(0)=0\subset W_2$). So if $\dim V_2\neq 0$ for some irreducible,
+then $\dim V_1=0$. Further, if $\dim V_2>1$, we can take $(0,
+\operatorname{span}(e_1), 0)$ which is also a submodule, so the only
+irreducible with $\dim V_2\neq 0$ is $(0, \bbC, 0)$. These are,
+therefore, the only irreducible modules over $\bbC[t]$. 
+}
+\item Show that if $M_1$ and $M_2$ are irreducible $R$-modules and $f:
+  M_1\rightarrow M_2$ is a homomorphism, then $f$ is either invertible
+  of the zero map. 
+\solution{We did this on another homework: $\ker f$ is a submodule of $M_1$, so
+if $f$ is not zero, $\ker f=0$. Similarly, $\operatorname{im}(f)$ is a
+submodule of $M_2$, so if $f$ is non-zero, $\operatorname{im}(f) =
+M_2$. Thus, $f$ is an isomorphism if it is non-zero. }
+\end{enumerate}
+\end{document}
+2018/02/14 21:22:10
